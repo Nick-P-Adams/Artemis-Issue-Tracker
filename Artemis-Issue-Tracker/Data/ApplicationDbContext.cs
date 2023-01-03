@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Artemis_Issue_Tracker.Models;
 
 namespace Artemis_Issue_Tracker.Data
 {
@@ -9,5 +10,9 @@ namespace Artemis_Issue_Tracker.Data
             : base(options)
         {
         }
+        public DbSet<Artemis_Issue_Tracker.Models.Checklist> Checklist { get; set; }
+        public DbSet<Artemis_Issue_Tracker.Models.Comment> Comment { get; set; }
+        public DbSet<Artemis_Issue_Tracker.Models.Issue> Issue { get; set; }
+        public DbSet<Artemis_Issue_Tracker.Models.Project> Project { get; set; }
     }
 }

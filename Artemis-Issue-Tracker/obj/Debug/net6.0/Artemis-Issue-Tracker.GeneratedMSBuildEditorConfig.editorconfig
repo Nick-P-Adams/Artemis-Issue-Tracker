@@ -20,12 +20,92 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Checklists/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Checklists/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Checklists/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Checklists/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Checklists/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hlY2tsaXN0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Comments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Comments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Comments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Comments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Comments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tbWVudHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Issues/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Issues/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Issues/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Issues/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Issues/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXNzdWVzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Projects/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Projects/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Projects/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Projects/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Projects/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvamVjdHNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/nickp/source/repos/Artemis-Issue-Tracker/Artemis-Issue-Tracker/Views/Shared/Error.cshtml]
