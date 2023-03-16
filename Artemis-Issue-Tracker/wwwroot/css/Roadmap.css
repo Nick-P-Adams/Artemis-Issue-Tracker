@@ -1,0 +1,42 @@
+﻿.roadmap-container {
+    height: 100%;
+    background: #232323;
+    cursor: grab;
+    overflow: auto;
+}
+
+.date-container {
+    display: flex;
+    flex-direction: row;
+    height: 25%;
+}
+
+    .date-container .date-item {
+        
+    }
+        .date-container .date-item ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .date-container .date-item ul li {
+            position: relative;
+            width: calc(100%/7);
+        }
+
+        .date-container .date-item .month-container {
+            width: 400px;
+            height: 25px;
+            text-align: center;
+        }
+
+        .date-container .date-item .week-container {
+            width: 400px;
+            height: 50px;
+            font-size: small;
+            text-align: center;
+        }
+
+.task-container {
+
+}

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Artemis_Issue_Tracker.Data;
 using Artemis_Issue_Tracker.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -20,6 +21,7 @@ namespace Artemis_Issue_Tracker.Controllers
         }
 
         // GET: Projects
+        [Authorize]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Project.ToListAsync());

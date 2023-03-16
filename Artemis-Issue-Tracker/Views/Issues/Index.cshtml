@@ -4,56 +4,51 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="tabContainer">
+    <div class="buttonContainer">
+        <button onclick="showPanel(0, '#232323')">Roadmap</button>
+        <button onclick="showPanel(1, '#232323')">Issues</button>
+        <button onclick="showPanel(2, '#232323')">Overview</button>
+    </div>
+    <div class="tabPanel">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AttachmentURL)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SprintCount)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AttachmentURL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SprintCount)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        <!-- Start of Roadmap -->
+        <div class="roadmap-container">
+            <div class="date-container" id="date-container"></div>
+
+            <div class="task-container">
+            </div>
+        </div>
+        <!-- End of Roadmap -->
+
+        <!-- Start of Calendar -->
+        <!--
+        <div class="wrapper">
+            <header>
+                <p class="current-date" id="current-date"></p>
+            </header>
+
+            <div class="button-container">
+                <button type="button" class="prev-button" id="prev-button">Prev</button>
+                <button type="button" class="next-button" id="next-button">Next</button>
+            </div>
+
+            <div class="calendar">
+                <ul class="weeks">
+                    <li>Sun</li>
+                    <li>Mon</li>
+                    <li>Tue</li>
+                    <li>Wed</li>
+                    <li>Thu</li>
+                    <li>Fri</li>
+                    <li>Sat</li>
+                </ul>
+                <ul class="days" id="days"></ul>
+            </div>
+        </div> 
+        -->
+        <!-- End of Calendar -->
+    </div>
+    <div class="tabPanel">Tab 2:Content</div>
+    <div class="tabPanel">Tab 3:Content</div>
+</div>

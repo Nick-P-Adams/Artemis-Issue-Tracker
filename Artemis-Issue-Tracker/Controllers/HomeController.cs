@@ -1,4 +1,5 @@
 ﻿using Artemis_Issue_Tracker.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,12 +8,14 @@ namespace Artemis_Issue_Tracker.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly Controllers.ProjectsController projects;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             return View();
