@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pJPHhMxnFJbVZ/GvGRGVu5jJXmc84JOJ30xJJEzR03Q=",
+  "Hash": "HbhuXPRIz34qlaBA09OOfTp7RfJ7AGnNwR/u2MtLdyc=",
   "Source": "Artemis-Issue-Tracker",
   "BasePath": "_content/Artemis-Issue-Tracker",
   "Mode": "Default",
@@ -1071,23 +1071,6 @@
       "OriginalItemSpec": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Artemis-Issue-Tracker.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Calendar.css",
-      "SourceId": "Artemis-Issue-Tracker",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
-      "BasePath": "_content/Artemis-Issue-Tracker",
-      "RelativePath": "css/Calendar.css",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\Calendar.css"
-    },
-    {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Roadmap.css",
       "SourceId": "Artemis-Issue-Tracker",
       "SourceType": "Discovered",
@@ -1154,23 +1137,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
-    },
-    {
-      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\calendar.js",
-      "SourceId": "Artemis-Issue-Tracker",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
-      "BasePath": "_content/Artemis-Issue-Tracker",
-      "RelativePath": "js/calendar.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\calendar.js"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\Roadmap.js",
