@@ -8,23 +8,29 @@ using Microsoft.EntityFrameworkCore;
 using Artemis_Issue_Tracker.Data;
 using Artemis_Issue_Tracker.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
     public class ProjectsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private UserManager<IdentityUser> _userManager;
 
-        public ProjectsController(ApplicationDbContext context)
+        public ProjectsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Projects
+        // This is where we need to filter the list of projects based on the UserProject table
         [Authorize]
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Project.ToListAsync());
+            var id = _userManager.GetUserId(User);
+
+            return View(await _context.Project.ToListAsync());
         }
 
         // GET: Projects/Details/5
@@ -46,6 +52,7 @@ namespace Artemis_Issue_Tracker.Controllers
         }
 
         // GET: Projects/Create
+        // responsible for giving us the project create view
         public IActionResult Create()
         {
             return View();
@@ -54,6 +61,9 @@ namespace Artemis_Issue_Tracker.Controllers
         // POST: Projects/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+        // Once on the view this handles the routes that come next
+        // Need to add the project id and user id to the UserProject table here 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Title,Description,SprintLength,SprintCount")] Project project)

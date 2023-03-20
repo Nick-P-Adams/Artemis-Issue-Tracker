@@ -15,20 +15,13 @@
             <th>
                 <label class="text-light">Name</label>
             </th>
-            <th>
-                <label class="text-light">Description</label>
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr>
             <td>
                     <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td class="text-light">
-                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 <a class="text-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
