@@ -28,9 +28,13 @@ namespace Artemis_Issue_Tracker.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
-            var id = _userManager.GetUserId(User);
-
-            return View(await _context.Project.ToListAsync());
+            var currentUserId = _userManager.GetUserId(User);
+            var projects = from p in _context.Project
+                           join up in _context.UserProject
+                           on p.Id equals up.ProjectId
+                           where up.UserId == currentUserId
+                           select p;
+            return View(await projects.ToListAsync());
         }
 
         // GET: Projects/Details/5

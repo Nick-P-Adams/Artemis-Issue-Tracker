@@ -14,5 +14,6 @@ namespace Artemis_Issue_Tracker.Data
         public DbSet<Artemis_Issue_Tracker.Models.Comment> Comment { get; set; }
         public DbSet<Artemis_Issue_Tracker.Models.Issue> Issue { get; set; }
         public DbSet<Artemis_Issue_Tracker.Models.Project> Project { get; set; }
+        public DbSet<Artemis_Issue_Tracker.Models.UserProject> UserProject { get; set; }
     }
 }
