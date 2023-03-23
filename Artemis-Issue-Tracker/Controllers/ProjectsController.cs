@@ -74,8 +74,15 @@ namespace Artemis_Issue_Tracker.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(project);
+                _context.Project.Add(project);
                 await _context.SaveChangesAsync();
+
+                var currentUserId = _userManager.GetUserId(User);
+                var userProject = new UserProject() { UserId = currentUserId, ProjectId = project.Id };
+
+                _context.UserProject.Add(userProject);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
             return View(project);

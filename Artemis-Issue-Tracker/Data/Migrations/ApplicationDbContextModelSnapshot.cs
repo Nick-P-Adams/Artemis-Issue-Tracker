@@ -123,6 +123,20 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                     b.ToTable("Project");
                 });
 
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.UserProject", b =>
+            {
+                b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                b.Property<int>("ProjectId")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                b.HasKey("UserId");
+
+                b.ToTable("UserProject");
+            });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

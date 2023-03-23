@@ -16,3 +16,17 @@ body {
     margin-bottom: 60px;
     background: #232323;
 }
+
+a {
+    text-decoration: none;
+}
+
+table {
+    border-collapse: collapse;
+}
+table, tr, th {
+    border: none;
+}
+table, tr, td {
+    border: none;
+}

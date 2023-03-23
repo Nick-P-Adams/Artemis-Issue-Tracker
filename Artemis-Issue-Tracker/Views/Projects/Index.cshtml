@@ -19,9 +19,9 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            <tr>
+        <tr>
             <td>
-                    <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
             </td>
             <td>
                 <a class="text-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
