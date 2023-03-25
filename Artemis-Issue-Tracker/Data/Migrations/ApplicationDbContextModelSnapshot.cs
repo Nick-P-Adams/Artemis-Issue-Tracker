@@ -124,18 +124,17 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                 });
 
             modelBuilder.Entity("Artemis_Issue_Tracker.Models.UserProject", b =>
-            {
-                b.Property<string>("UserId")
+                {
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                b.Property<int>("ProjectId")
-                    .ValueGeneratedOnAdd()
-                    .HasColumnType("int");
+                    b.Property<int>("ProjectId")
+                        .HasColumnType("int");
 
-                b.HasKey("UserId");
+                    b.HasKey("UserId");
 
-                b.ToTable("UserProject");
-            });
+                    b.ToTable("UserProject");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {

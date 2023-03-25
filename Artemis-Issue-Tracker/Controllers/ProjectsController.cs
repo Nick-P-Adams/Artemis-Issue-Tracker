@@ -70,7 +70,7 @@ namespace Artemis_Issue_Tracker.Controllers
         // Need to add the project id and user id to the UserProject table here 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,SprintLength,SprintCount")] Project project)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,Summary,CreationDate")] Project project)
         {
             if (ModelState.IsValid)
             {

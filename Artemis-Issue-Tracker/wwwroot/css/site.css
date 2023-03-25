@@ -8,13 +8,21 @@ html {
     }
 }
 
-html {
-
+body {
+    height: 100vh;
+    background: #232323;
 }
 
-body {
-    margin-bottom: 60px;
-    background: #232323;
+header {
+    height: 8%;
+}
+
+footer {
+    height: 4%;
+}
+
+main {
+    height: 100%;
 }
 
 a {
@@ -29,4 +37,25 @@ table, tr, th {
 }
 table, tr, td {
     border: none;
+}
+
+.navbar {
+    height: 100%;
+}
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+    height: 88%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.underline {
+    text-decoration: underline;
 }

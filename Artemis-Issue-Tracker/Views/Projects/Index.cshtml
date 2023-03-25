@@ -13,7 +13,13 @@
     <thead>
         <tr>
             <th>
-                <label class="text-light">Name</label>
+                <label class="text-light">Title</label>
+            </th>
+            <th>
+                <label class="text-light">Summary</label>
+            </th>
+            <th>
+                <label class="text-light">Creation Date</label>
             </th>
         </tr>
     </thead>
@@ -22,6 +28,12 @@
         <tr>
             <td>
                 <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td>
+                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Summary)</a>
+            </td>
+            <td>
+                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.CreationDate)</a>
             </td>
             <td>
                 <a class="text-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

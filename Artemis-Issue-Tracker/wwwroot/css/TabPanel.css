@@ -1,10 +1,10 @@
 ﻿.tabContainer {
-width: 100%;
-height: 1000px;
+    height: 100%;
+    width: 100%;
 }
 
 .tabContainer .buttonContainer {
-    height: 4%;
+    height: 8%;
 }
 
 .tabContainer .buttonContainer button {
@@ -25,13 +25,11 @@ height: 1000px;
 }
 
 .tabContainer .tabPanel {
-    height: 96%;
+    height: 92%;
     background-color: grey;
     color: white;
     text-align: center;
-    min-height: 100vh;
-    padding-top: 105px;
-    box-sizing: border-box;
+    padding-top: 10px;
     font-family: sans-serif;
     font-size: 22px;
     display: none;
