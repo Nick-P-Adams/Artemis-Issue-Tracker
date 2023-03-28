@@ -4,14 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
+<link rel="stylesheet" href="~/css/DropdownMenu.css" asp-append-version="true" />
+
 <h1 class="text-light">Projects</h1>
 
 <p>
     <a class="text-light" asp-action="Create">Create New</a>
 </p>
+
 <table class="table text-light">
     <thead>
-        <tr>
+        <tr class="table-header-hover">
             <th>
                 <label class="text-light">Title</label>
             </th>
@@ -25,22 +28,32 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+        <tr class="table-row-hover">
+            <td class="pointer">
+                <a class="text-light link-block underline-hover" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
+            <td class="pointer">
+                <a class="text-light link-block" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Summary)</a>
+            </td>
+            <td class="pointer">
+                <a class="text-light link-block" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</a>
             </td>
             <td>
-                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Summary)</a>
-            </td>
-            <td>
-                <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.CreationDate)</a>
-            </td>
-            <td>
-                <a class="text-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a class="text-light" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a class="text-light" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <div class="dropdown">
+                    <div class="dropdown-button" id="dropdown-button @item.Id" onclick="displayDropdown('dropdown-button @item.Id', 'project-dropdown-menu', '@item.Id')">
+                        <svg width="24px" height="24px" viewBox="0 0 24 24">
+                            <g fill="currentColor" fill-rule="evenodd">
+                                <circle cx="5" cy="12" r="2"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                                <circle cx="19" cy="12" r="2"></circle>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
             </td>
         </tr>
 }
     </tbody>
 </table>
+
+<script src="~/js/DropdownMenu.js" asp-append-version="true"></script>

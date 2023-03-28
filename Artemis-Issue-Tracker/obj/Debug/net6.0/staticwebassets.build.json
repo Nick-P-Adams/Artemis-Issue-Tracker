@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HbhuXPRIz34qlaBA09OOfTp7RfJ7AGnNwR/u2MtLdyc=",
+  "Hash": "h8hcO89vBPff6mR2SOCbCvaSRQ9YLWO0mOVUKSsuijQ=",
   "Source": "Artemis-Issue-Tracker",
   "BasePath": "_content/Artemis-Issue-Tracker",
   "Mode": "Default",
@@ -1071,6 +1071,23 @@
       "OriginalItemSpec": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Artemis-Issue-Tracker.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\DropdownMenu.css",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "css/DropdownMenu.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\DropdownMenu.css"
+    },
+    {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Roadmap.css",
       "SourceId": "Artemis-Issue-Tracker",
       "SourceType": "Discovered",
@@ -1137,6 +1154,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\DropdownMenu.js",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "js/DropdownMenu.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\DropdownMenu.js"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\Roadmap.js",

@@ -32,10 +32,7 @@ a {
 table {
     border-collapse: collapse;
 }
-table, tr, th {
-    border: none;
-}
-table, tr, td {
+table, tr, th, td {
     border: none;
 }
 
@@ -58,4 +55,26 @@ table, tr, td {
 
 .underline {
     text-decoration: underline;
+}
+
+.underline-hover:hover {
+    text-decoration: underline;
+}
+
+.link-block {
+    display: block;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.table-row-hover:hover {
+    background-color: #404040;
+}
+
+.table-header-hover th:hover,
+.table-header-hover label:hover {
+    background-color: #404040;
+    cursor:pointer;
 }

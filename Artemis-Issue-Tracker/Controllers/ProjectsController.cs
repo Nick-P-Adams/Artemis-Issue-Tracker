@@ -9,6 +9,7 @@ using Artemis_Issue_Tracker.Data;
 using Artemis_Issue_Tracker.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using System.Data;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -34,6 +35,7 @@ namespace Artemis_Issue_Tracker.Controllers
                            on p.Id equals up.ProjectId
                            where up.UserId == currentUserId
                            select p;
+
             return View(await projects.ToListAsync());
         }
 
@@ -97,6 +99,7 @@ namespace Artemis_Issue_Tracker.Controllers
             }
 
             var project = await _context.Project.FindAsync(id);
+
             if (project == null)
             {
                 return NotFound();
@@ -109,7 +112,7 @@ namespace Artemis_Issue_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,SprintLength,SprintCount")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Summary,CreationDate")] Project project)
         {
             if (id != project.Id)
             {
@@ -118,23 +121,23 @@ namespace Artemis_Issue_Tracker.Controllers
 
             if (ModelState.IsValid)
             {
-                try
+                using (var transaction = _context.Database.BeginTransaction())
                 {
-                    _context.Update(project);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProjectExists(project.Id))
+                    try
                     {
-                        return NotFound();
+                        _context.Update(project);
+
+                        await _context.SaveChangesAsync();
+                        await transaction.CommitAsync();
+
+                        return RedirectToAction(nameof(Index));
                     }
-                    else
+                    catch (DBConcurrencyException ex) 
                     {
-                        throw;
+                        await transaction.RollbackAsync();
+                        return StatusCode(500, $"An error occurred while updating the project: {ex.Message}");
                     }
                 }
-                return RedirectToAction(nameof(Index));
             }
             return View(project);
         }
@@ -149,6 +152,7 @@ namespace Artemis_Issue_Tracker.Controllers
 
             var project = await _context.Project
                 .FirstOrDefaultAsync(m => m.Id == id);
+
             if (project == null)
             {
                 return NotFound();
@@ -162,18 +166,44 @@ namespace Artemis_Issue_Tracker.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Project == null)
+            var currentUserId = _userManager.GetUserId(User);
+
+            using (var transaction = _context.Database.BeginTransaction())
             {
-                return Problem("Entity set 'ApplicationDbContext.Project'  is null.");
+                try
+                {
+                    var project = await _context.Project.FindAsync(id);
+
+                    if (project == null)
+                    {
+                        return NotFound();
+                    }
+
+                    var userProject = await _context.UserProject
+                                            .Where(up => up.ProjectId == project.Id && up.UserId == currentUserId)
+                                            .SingleAsync();
+
+                    if (userProject == null)
+                    {
+                        return NotFound();
+                    }
+
+                    _context.UserProject.Remove(userProject);
+                    _context.Project.Remove(project);
+
+                    // Save changes in a transaction
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DBConcurrencyException ex)
+                {
+                    // If an error occurs, roll back the transaction
+                    await transaction.RollbackAsync();
+                    return StatusCode(500, $"An error occurred while deleting the project: {ex.Message}");
+                }
             }
-            var project = await _context.Project.FindAsync(id);
-            if (project != null)
-            {
-                _context.Project.Remove(project);
-            }
-            
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
         }
 
         private bool ProjectExists(int id)

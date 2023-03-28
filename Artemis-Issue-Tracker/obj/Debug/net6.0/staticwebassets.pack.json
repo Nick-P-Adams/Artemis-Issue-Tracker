@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Artemis-Issue-Tracker.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\DropdownMenu.css",
+      "PackagePath": "staticwebassets\\css\\DropdownMenu.css"
+    },
+    {
       "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Roadmap.css",
       "PackagePath": "staticwebassets\\css\\Roadmap.css"
     },
@@ -19,6 +23,10 @@
     {
       "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\DropdownMenu.js",
+      "PackagePath": "staticwebassets\\js\\DropdownMenu.js"
     },
     {
       "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\Roadmap.js",
