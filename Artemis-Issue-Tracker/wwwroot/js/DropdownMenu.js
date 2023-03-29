@@ -22,6 +22,7 @@ function displayDropdown(buttonId, menuClass, itemId) {
         }
 
         document.body.appendChild(menu);
+        window.addEventListener('resize', repositionMenu);
         document.addEventListener('click', clickOutside);
     }
 }
@@ -33,7 +34,7 @@ function createMenu(menuClass, itemId) {
     menu.className = menuClass;
     menu.id = menuClass + itemId;
     menu.style.position = "absolute";
-    menu.style.top = (buttonRect.top + buttonRect.height) + 'px';
+    menu.style.top = buttonRect.bottom + 'px';
     menu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
 }
 
@@ -44,8 +45,15 @@ function clickOutside(event) {
     }
 }
 
+function repositionMenu() {
+    buttonRect = button.getBoundingClientRect();
+    menu.style.top = buttonRect.bottom + 'px';
+    menu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
+}
+
 function removeMenu() {
     document.body.removeChild(menu);
+    window.removeEventListener('resize', repositionMenu);
     document.removeEventListener('click', clickOutside);
     menu = null;
 }
