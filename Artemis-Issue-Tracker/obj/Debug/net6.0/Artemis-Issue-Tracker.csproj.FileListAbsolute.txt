@@ -277,3 +277,13 @@ C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debu
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.pdb
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.genruntimeconfig.cache
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\ref\Artemis-Issue-Tracker.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\JetBrains.Annotations.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.Mvc.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.Razor.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.Helpers.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.WebPages.Deployment.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.WebPages.Razor.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Web.WebPages.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\Microsoft.Web.Infrastructure.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\X.PagedList.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\X.PagedList.Mvc.Core.dll

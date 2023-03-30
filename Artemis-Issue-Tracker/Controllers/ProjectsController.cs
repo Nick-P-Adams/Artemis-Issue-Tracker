@@ -10,6 +10,7 @@ using Artemis_Issue_Tracker.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Data;
+using X.PagedList;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -27,7 +28,7 @@ namespace Artemis_Issue_Tracker.Controllers
         // GET: Projects
         // This is where we need to filter the list of projects based on the UserProject table
         [Authorize]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? page)
         {
             var currentUserId = _userManager.GetUserId(User);
             var projects = from p in _context.Project
@@ -36,7 +37,16 @@ namespace Artemis_Issue_Tracker.Controllers
                            where up.UserId == currentUserId
                            select p;
 
-            return View(await projects.ToListAsync());
+            int pageNumber = page ?? 1;
+            int pageSize = 10;
+            var pagedList = projects.ToPagedList(pageNumber, pageSize);
+
+            var viewModel = new ProjectIndexViewModel
+            {
+                Projects = pagedList
+            };
+
+            return View(viewModel.Projects);
         }
 
         // GET: Projects/Details/5

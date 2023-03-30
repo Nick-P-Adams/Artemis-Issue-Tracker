@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Artemis_Issue_Tracker.Models.Project>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 
 @{
     ViewData["Title"] = "Index";
@@ -55,5 +57,5 @@
 }
     </tbody>
 </table>
-
+@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new { page }))
 <script src="~/js/DropdownMenu.js" asp-append-version="true"></script>
