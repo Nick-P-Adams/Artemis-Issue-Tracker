@@ -70,10 +70,10 @@ function renderRoadmap() {
         dayNameList.innerHTML = liDayName;
         dayList.innerHTML = liDay;
 
-        if (date.getDate() < day && date.getDate() >= (day - 7) && month === new Date().getMonth()
+        if (date.getDate() > day && date.getDate() < (day + 7) && month === new Date().getMonth()
             && year === new Date().getFullYear())
         {
-            currentDate = i+1;
+            currentDate = i + 2;
         }
     }
 }
@@ -104,11 +104,12 @@ renderRoadmap();
  // In the future I will need to seperate this and pass the position value for current month and date.
 
 let dateItems = document.getElementsByClassName("date-item"),
-    dateItemWidth = $(dateItems[0]).width();
+    dateItemWidth = dateItems[0].clientWidth;
 
-let currentDateItemPosition = ((dateItemWidth * currentDate) - (dateItemWidth / 2)) - ($(roadmapContainer).width() / 2),
+let currentDateItemPosition = ((dateItemWidth * currentDate) - (dateItemWidth / 2)) - (roadmapContainer.clientWidth / 2),
     currentPosition = { left: 0, x: 0 };
 
+console.log(currentDate);
 const mouseDownHandler = function (e) {
     pos = {
         // The current scroll
