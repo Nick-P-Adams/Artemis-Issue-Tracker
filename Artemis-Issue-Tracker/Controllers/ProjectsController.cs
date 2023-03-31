@@ -28,8 +28,12 @@ namespace Artemis_Issue_Tracker.Controllers
         // GET: Projects
         // This is where we need to filter the list of projects based on the UserProject table
         [Authorize]
-        public async Task<IActionResult> Index(int? page)
+        public async Task<IActionResult> Index(string sortOrder, string searchTerm, int? page)
         {
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["TitleSort"] = sortOrder == "title_ascend" ? "title_descend" : "title_ascend";
+            ViewData["DateSort"] = String.IsNullOrEmpty(sortOrder) ? "date_descend" : "";
+
             var currentUserId = _userManager.GetUserId(User);
             var projects = from p in _context.Project
                            join up in _context.UserProject
@@ -37,16 +41,38 @@ namespace Artemis_Issue_Tracker.Controllers
                            where up.UserId == currentUserId
                            select p;
 
-            int pageNumber = page ?? 1;
-            int pageSize = 10;
-            var pagedList = projects.ToPagedList(pageNumber, pageSize);
-
-            var viewModel = new ProjectIndexViewModel
+            if (!String.IsNullOrEmpty(searchTerm))
             {
-                Projects = pagedList
-            };
+                projects = projects.Where(p => p.Title.Contains(searchTerm));
+            }
 
-            return View(viewModel.Projects);
+            switch (sortOrder)
+            {
+                case "title_ascend":
+                    projects = projects.OrderBy(p => p.Title);
+                    break;
+                case "title_descend":
+                    projects = projects.OrderByDescending(p => p.Title);
+                    break;
+                case "date_descend":
+                    projects = projects.OrderByDescending(p => p.CreationDate);
+                    break;
+                default:
+                    projects = projects.OrderBy(p => p.CreationDate);
+                    break;
+            }
+
+            int pageNumber = page ?? 1,
+                pageSize = 5;
+
+            // The ProjectIndexViewModel at the moment is not neccessary atm
+            // However, it may be useful in the future if I need to pass more than just the Project model info to the view
+            var projectsViewModel = new ProjectIndexViewModel
+            {
+                Projects = await projects.ToPagedListAsync(pageNumber, pageSize)
+            };
+            
+            return View(projectsViewModel.Projects);
         }
 
         // GET: Projects/Details/5

@@ -18,13 +18,13 @@
     <thead>
         <tr class="table-header-hover">
             <th>
-                <label class="text-light">Title</label>
+                <label class="text-light">@Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter })</label>
             </th>
             <th>
                 <label class="text-light">Summary</label>
             </th>
             <th>
-                <label class="text-light">Creation Date</label>
+                <label class="text-light">@Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })</label>
             </th>
         </tr>
     </thead>
@@ -57,5 +57,6 @@
 }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new { page }))
+@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
 <script src="~/js/DropdownMenu.js" asp-append-version="true"></script>
