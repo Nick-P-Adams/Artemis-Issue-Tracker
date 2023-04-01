@@ -1,59 +1,66 @@
-﻿var menu,
-    button;
-
-// need to fix the logic in this function to be readable 
-function displayDropdown(buttonId, menuClass, itemId) {
-    var previousMenu;
-
-    if (menu != null) {
-        previousMenu = menu;
-        removeMenu();
+﻿class DropdownMenu {
+    constructor() {
+        this.dropdownMenu = null;
+        this.button = null;
     }
 
-    if (previousMenu == null || (menu == null && previousMenu.id != menuClass + itemId)) {
-        button = document.getElementById(buttonId);
-        createMenu(menuClass, itemId);
+    // need to fix the logic in this function to be readable 
+    displayDropdown(buttonId, menuClass, itemId) {
+        let previousMenu;
 
-        // sort of a simple menu factory based on the Id or class add different options
-        if (menuClass = "project-dropdown-menu") {
-            var option1 = `<a class="text-light" href="/Projects/Edit/${itemId}">Edit</a>`;
-            var option2 = `<a class="text-light" href="/Projects/Delete/${itemId}">Delete</a>`;
-            menu.innerHTML = option1 + option2;
+        if (this.dropdownMenu != null) {
+            previousMenu = this.dropdownMenu;
+            this.removeMenu();
         }
 
-        document.body.appendChild(menu);
-        window.addEventListener('resize', repositionMenu);
-        document.addEventListener('click', clickOutside);
+        if (previousMenu == null || (this.dropdownMenu == null && previousMenu.id != menuClass + itemId)) {
+            this.button = document.getElementById(buttonId);
+            this.createMenu(menuClass, itemId);
+
+            // sort of a simple dropdownMenu factory based on the Id or class add different options
+            if (menuClass = "project-settings-menu") {
+                let editButton = `<a class="project-settings-menu-button text-light" href="/Projects/Edit/${itemId}">Edit</a>`;
+                let deleteButton = `<div class="project-settings-menu-button text-light" id="project-settings-delete-button ${itemId}" onclick="dropdownMenu.removeMenu(), popupMenu.displayPopup('project-delete-menu', '${itemId}')">Delete</div>`;
+                this.dropdownMenu.innerHTML = editButton + deleteButton;
+            }
+
+            document.body.appendChild(this.dropdownMenu);
+            window.addEventListener('resize', this.repositionMenu);
+            document.addEventListener('click', this.clickOutside);
+        }
+    }
+
+    createMenu(menuClass, itemId) {
+        let buttonRect = this.button.getBoundingClientRect();
+
+        this.dropdownMenu = document.createElement("div");
+        this.dropdownMenu.className = menuClass;
+        this.dropdownMenu.id = menuClass + itemId;
+        this.dropdownMenu.style.position = "absolute";
+        this.dropdownMenu.style.top = buttonRect.bottom + 'px';
+        this.dropdownMenu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
+    }
+
+    clickOutside(event) {
+        // If the click is outside of the dropdownMenu and the button
+        if (this.dropdownMenu == null) { return; }
+        if (!(this.dropdownMenu.contains(event.target) || this.button.contains(event.target))) {
+            this.removeMenu();
+        }
+    }
+
+    repositionMenu() {
+        let buttonRect = this.button.getBoundingClientRect();
+        this.dropdownMenu.style.top = buttonRect.bottom + 'px';
+        this.dropdownMenu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
+    }
+
+    removeMenu() {
+        document.body.removeChild(this.dropdownMenu);
+        window.removeEventListener('resize', this.repositionMenu);
+        document.removeEventListener('click', this.clickOutside);
+        this.dropdownMenu = null;
     }
 }
 
-function createMenu(menuClass, itemId) {
-    buttonRect = button.getBoundingClientRect();
-
-    menu = document.createElement("div");
-    menu.className = menuClass;
-    menu.id = menuClass + itemId;
-    menu.style.position = "absolute";
-    menu.style.top = buttonRect.bottom + 'px';
-    menu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
-}
-
-function clickOutside(event) {
-    // If the click is outside of the menu and the button
-    if (!menu.contains(event.target) && !button.contains(event.target)) {
-        removeMenu();
-    }
-}
-
-function repositionMenu() {
-    buttonRect = button.getBoundingClientRect();
-    menu.style.top = buttonRect.bottom + 'px';
-    menu.style.right = (document.documentElement.clientWidth - buttonRect.right) + 'px';
-}
-
-function removeMenu() {
-    document.body.removeChild(menu);
-    window.removeEventListener('resize', repositionMenu);
-    document.removeEventListener('click', clickOutside);
-    menu = null;
-}
+const dropdownMenu = new DropdownMenu();

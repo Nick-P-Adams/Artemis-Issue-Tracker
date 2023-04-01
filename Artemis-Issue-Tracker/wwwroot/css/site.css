@@ -30,9 +30,13 @@ a {
 }
 
 table {
-    border-collapse: collapse;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-bottom: 1px solid;
+    border-color: #404040;
 }
-table, tr, th, td {
+tr, td {
     border: none;
 }
 

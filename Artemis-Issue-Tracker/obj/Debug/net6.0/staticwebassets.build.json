@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "h8hcO89vBPff6mR2SOCbCvaSRQ9YLWO0mOVUKSsuijQ=",
+  "Hash": "c/qmKxk0tkxome3TyJnRvEHld/khxgjGL/IXz8EZBRM=",
   "Source": "Artemis-Issue-Tracker",
   "BasePath": "_content/Artemis-Issue-Tracker",
   "Mode": "Default",
@@ -1071,12 +1071,12 @@
       "OriginalItemSpec": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Artemis-Issue-Tracker.bundle.scp.css"
     },
     {
-      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\DropdownMenu.css",
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\ProjectDeleteMenu.css",
       "SourceId": "Artemis-Issue-Tracker",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
       "BasePath": "_content/Artemis-Issue-Tracker",
-      "RelativePath": "css/DropdownMenu.css",
+      "RelativePath": "css/ProjectDeleteMenu.css",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1085,7 +1085,24 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\css\\DropdownMenu.css"
+      "OriginalItemSpec": "wwwroot\\css\\ProjectDeleteMenu.css"
+    },
+    {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\ProjectSettingsMenu.css",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "css/ProjectSettingsMenu.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\ProjectSettingsMenu.css"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Roadmap.css",
@@ -1171,6 +1188,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\DropdownMenu.js"
+    },
+    {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\PopupMenu.js",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "js/PopupMenu.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\PopupMenu.js"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\Roadmap.js",

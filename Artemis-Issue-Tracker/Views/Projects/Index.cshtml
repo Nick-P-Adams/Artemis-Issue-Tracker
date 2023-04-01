@@ -6,7 +6,8 @@
     ViewData["Title"] = "Index";
 }
 
-<link rel="stylesheet" href="~/css/DropdownMenu.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/ProjectSettingsMenu.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/ProjectDeleteMenu.css" asp-append-version="true" />
 
 <h1 class="text-light">Projects</h1>
 
@@ -26,6 +27,7 @@
             <th>
                 <label class="text-light">@Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })</label>
             </th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -41,16 +43,14 @@
                 <a class="text-light link-block" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</a>
             </td>
             <td>
-                <div class="dropdown">
-                    <div class="dropdown-button" id="dropdown-button @item.Id" onclick="displayDropdown('dropdown-button @item.Id', 'project-dropdown-menu', '@item.Id')">
-                        <svg width="24px" height="24px" viewBox="0 0 24 24">
-                            <g fill="currentColor" fill-rule="evenodd">
-                                <circle cx="5" cy="12" r="2"></circle>
-                                <circle cx="12" cy="12" r="2"></circle>
-                                <circle cx="19" cy="12" r="2"></circle>
-                            </g>
-                        </svg>
-                    </div>
+                <div class="project-settings-button" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
+                    <svg width="24px" height="24px" viewBox="0 0 24 24">
+                        <g fill="currentColor" fill-rule="evenodd">
+                            <circle cx="5" cy="12" r="2"></circle>
+                            <circle cx="12" cy="12" r="2"></circle>
+                            <circle cx="19" cy="12" r="2"></circle>
+                        </g>
+                    </svg>
                 </div>
             </td>
         </tr>
@@ -60,3 +60,4 @@
 @Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 <script src="~/js/DropdownMenu.js" asp-append-version="true"></script>
+<script src="~/js/PopupMenu.js" asp-append-version="true"></script>
