@@ -177,7 +177,6 @@ namespace Artemis_Issue_Tracker.Controllers
             }
             return View(project);
         }
-
         // GET: Projects/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -194,13 +193,13 @@ namespace Artemis_Issue_Tracker.Controllers
                 return NotFound();
             }
 
-            return View(project);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: Projects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             var currentUserId = _userManager.GetUserId(User);
 

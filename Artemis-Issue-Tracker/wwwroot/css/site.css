@@ -29,6 +29,13 @@ a {
     text-decoration: none;
 }
 
+input[type="submit"] {
+    color: #fff;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 table {
     border-collapse: separate;
     border-spacing: 0;

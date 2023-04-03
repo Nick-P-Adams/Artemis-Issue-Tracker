@@ -2,6 +2,8 @@
     constructor() {
         this.dropdownMenu = null;
         this.button = null;
+        this.boundRepositionMenu = this.repositionMenu.bind(this);
+        this.boundClickOutside = this.clickOutside.bind(this);
     }
 
     // need to fix the logic in this function to be readable 
@@ -20,13 +22,13 @@
             // sort of a simple dropdownMenu factory based on the Id or class add different options
             if (menuClass = "project-settings-menu") {
                 let editButton = `<a class="project-settings-menu-button text-light" href="/Projects/Edit/${itemId}">Edit</a>`;
-                let deleteButton = `<div class="project-settings-menu-button text-light" id="project-settings-delete-button ${itemId}" onclick="dropdownMenu.removeMenu(), popupMenu.displayPopup('project-delete-menu', '${itemId}')">Delete</div>`;
+                let deleteButton = `<div class="project-settings-menu-button text-light" id="project-settings-delete-button ${itemId}" onclick="popupMenu.displayPopup('project-settings-delete-button ${itemId}', 'project-delete-menu', '${itemId}'), dropdownMenu.removeMenu()">Delete</div>`;
                 this.dropdownMenu.innerHTML = editButton + deleteButton;
             }
 
             document.body.appendChild(this.dropdownMenu);
-            window.addEventListener('resize', this.repositionMenu);
-            document.addEventListener('click', this.clickOutside);
+            window.addEventListener('resize', this.boundRepositionMenu);
+            document.addEventListener('click', this.boundClickOutside);
         }
     }
 
@@ -57,8 +59,8 @@
 
     removeMenu() {
         document.body.removeChild(this.dropdownMenu);
-        window.removeEventListener('resize', this.repositionMenu);
-        document.removeEventListener('click', this.clickOutside);
+        window.removeEventListener('resize', this.boundRepositionMenu);
+        document.removeEventListener('click', this.boundClickOutside);
         this.dropdownMenu = null;
     }
 }
