@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "c/qmKxk0tkxome3TyJnRvEHld/khxgjGL/IXz8EZBRM=",
+  "Hash": "y7iVTGfgaSxvr7K1MPx1iNTPXAza1W2QYjRawKFDHjY=",
   "Source": "Artemis-Issue-Tracker",
   "BasePath": "_content/Artemis-Issue-Tracker",
   "Mode": "Default",
@@ -1069,6 +1069,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Artemis-Issue-Tracker.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\Project.css",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "css/Project.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Project.css"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\css\\ProjectDeleteMenu.css",
