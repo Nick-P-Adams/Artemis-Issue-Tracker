@@ -21,8 +21,8 @@
 
             // sort of a simple dropdownMenu factory based on the Id or class add different options
             if (menuClass = "project-settings-menu") {
-                let editButton = `<a class="project-settings-menu-button text-light" href="/Projects/Edit/${itemId}">Edit</a>`;
-                let deleteButton = `<div class="project-settings-menu-button text-light" id="project-settings-delete-button ${itemId}" onclick="popupMenu.displayPopup('project-settings-delete-button ${itemId}', 'project-delete-menu', '${itemId}'), dropdownMenu.removeMenu()">Delete</div>`;
+                let editButton = `<a class="dropdown-menu-button" href="/Projects/Edit/${itemId}">Edit</a>`;
+                let deleteButton = `<div class="dropdown-menu-button-delete" id="project-settings-delete-button ${itemId}" onclick="popupMenu.displayPopup('project-settings-delete-button ${itemId}', 'project-delete-menu', '${itemId}'), dropdownMenu.removeMenu()">Delete</div>`;
                 this.dropdownMenu.innerHTML = editButton + deleteButton;
             }
 

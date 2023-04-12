@@ -1,3 +1,25 @@
+:root {
+    /* Text Color */
+    --artemis-text-primary: #e5e5e5;
+    --artemis-text-link: #0d6efd;
+    --artemis-text-warning: #a40202;
+    --artemis-text-muted: #c5c5c5;
+    /* Site Colors */
+    --artemis-color-foreground: #313131;
+    --artemis-color-midground: #282828;
+    --artemis-color-background: #232323;
+    --artemis-color-hover: #404040;
+    --artemis-color-hover-light: #606060;
+    --artemis-color-focus: #8a8a8a;
+    --artemis-color-focus-blue: #06377e;
+    --artemis-color-warning: #a40202;
+    --artemis-color-warning-hover: #a75757;
+    --artemis-color-warning-focus: #c28989;
+    /* Misc Colors */
+    --artemis-border-dark: #101010;
+}
+
+/* Main Layout */
 html {
   font-size: 14px;
 }
@@ -10,82 +32,325 @@ html {
 
 body {
     height: 100vh;
-    background: #232323;
+    background-color: var(--artemis-color-background);
 }
 
 header {
     height: 8%;
 }
 
-footer {
-    height: 4%;
-}
-
 main {
     height: 100%;
 }
 
-a {
-    text-decoration: none;
-}
-
-input[type="submit"] {
-    color: #fff;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-table {
-    border-collapse: separate;
-    border-spacing: 0;
-    table-layout: fixed;
-    border-bottom: 1px solid;
-    border-color: #404040;
-}
-tr, td {
-    border: none;
-}
-
-.navbar {
-    height: 100%;
-}
-
-.container,
-.container-fluid,
-.container-xxl,
-.container-xl,
-.container-lg,
-.container-md,
-.container-sm {
+.view-container{
     height: 88%;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
 }
 
-.underline {
-    text-decoration: underline;
+footer {
+    height: 4%;
+}
+/*################################################################################*/
+
+/* View Layout */
+.view-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: var(--artemis-text-primary);
 }
 
-.underline-hover:hover {
-    text-decoration: underline;
+.view-title {
+    width: 100%;
+}
+/*################################################################################*/
+
+
+/*################################################################################*/
+/* Site Elements */
+/*################################################################################*/
+
+/* Navbar */
+.navbar {
+    background-color: var(--artemis-color-foreground);
+    height: 100%;
+}
+/*################################################################################*/
+
+/* Tables */
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    border-bottom: 1px solid;
+    border-color: var(--artemis-text-primary);
+    color: var(--artemis-text-primary);
+}
+    .table > * > tr > * {
+        padding: 0;
+        vertical-align: middle;
+    }
+    .table a {
+        text-decoration: none;
+        color: var(--artemis-text-primary);
+    }
+    .table tbody a {
+        color: var(--artemis-text-link);
+    }
+        .table tbody a:hover {
+            text-decoration: underline;
+        }
+
+td {
+    border: none;
 }
 
-.link-block {
+th *,
+td *:not(svg, div) {
+    padding: 0.4rem 0.4rem;
     display: block;
 }
 
-.pointer {
+th a:hover,
+tbody tr:hover {
+    background-color: var(--artemis-color-hover);
+}
+/*################################################################################*/
+
+/* Pagination */
+.pagination-container {
+}
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    place-content: center;
+}
+
+.page-link {
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-midground);
+    border: 1px solid var(--artemis-border-dark);
+    border-left: none;
+    border-right: none;
+    box-shadow: inset 0px 2px 6px 0px rgba(20, 20, 20, 0.6);
+    transition: background-color 0.25s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-link {
+        transition: none;
+    }
+}
+
+.page-link:hover {
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-hover);
+    border-color: var(--artemis-border-dark);
+}
+
+.page-link:focus {
+    background-color: var(--artemis-color-focus);
+    box-shadow: none;
+}
+
+.page-item.active .page-link {
+    color: var(--artemis-text-muted);
+    background-color: var(--artemis-color-background);
+    border-color: var(--artemis-border-dark);
+    pointer-events: none;
+    cursor: default;
+}
+
+.page-item.disabled .page-link {
+    color: var(--artemis-text-muted);
+    background-color: var(--artemis-color-background);
+    border-color: var(--artemis-border-dark);
+}
+
+.PagedList-skipToNext .page-link {
+    border-right: 1px solid var(--artemis-border-dark);
+}
+
+.PagedList-skipToPrevious .page-link {
+    border-left: 1px solid var(--artemis-border-dark);
+}
+/*################################################################################*/
+
+/* Menus, Buttons, and Fields */
+.project-settings-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    background-color: var(--artemis-color-background);
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
+    z-index: 350;
+}
+
+.project-delete-menu {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 35%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(100%, 23%);
+    background-color: var(--artemis-color-background);
+    color: var(--artemis-text-primary);
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
+    z-index: 350;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.popup-menu-title {
+    display: flex;
+    height: 20%;
+    place-content: center;
+}
+
+.popup-menu-body {
+    display: flex;
+    height: 65%;
+    text-align: center;
+}
+
+.popup-menu-button-container {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid var(--artemis-border-dark);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+input[type="submit"] {
+    /* This style is is being used for form input submit */
+    color: var(--artemis-text-primary);
+    border: none;
+    background-color: transparent;
     cursor: pointer;
 }
 
-.table-row-hover:hover {
-    background-color: #404040;
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
 }
 
-.table-header-hover th:hover,
-.table-header-hover label:hover {
-    background-color: #404040;
-    cursor:pointer;
+.button-icon {
+    align-self: center;
+    padding: 2px;
+    stroke: var(--artemis-text-primary);
 }
+
+.button-create {
+    display: flex;
+    height: 32px;
+    width: 130px;
+    padding: 0px 10px 0px 10px;
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-midground);
+    border: 1px solid var(--artemis-border-dark);
+    border-radius: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    box-shadow: inset 0px 0.5px 4px 2px rgba(20, 20, 20, 0.8);
+    transition: background-color 0.25s ease-in-out;
+}
+    .button-create p {
+        margin: auto;
+    }
+    .button-create:hover {
+        color: var(--artemis-text-primary);
+        background-color: var(--artemis-color-hover);
+    }
+    .button-create:focus {
+        background-color: var(--artemis-color-focus);
+    }
+
+.button-threedot {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    color: var(--artemis-text-primary);
+    background-color: transparent;
+    transition: background-color 0.15s ease-in-out;
+}
+    .button-threedot:hover {
+        background-color: var(--artemis-color-focus);
+    }
+    .button-threedot:focus {
+        color: var(--artemis-text-link);
+        background-color: var(--artemis-color-focus-blue);
+    }
+
+.dropdown-menu-button {
+    color: var(--artemis-text-primary);
+    text-decoration: none;
+    text-align: center;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+    .dropdown-menu-button:hover {
+        color: var(--artemis-text-primary);
+        background-color: var(--artemis-color-hover-light);
+    }
+    .dropdown-menu-button:focus {
+        background-color: var(--artemis-color-focus);
+    }
+
+.dropdown-menu-button-delete {
+    color: var(--artemis-text-primary);
+    text-align: center;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+    .dropdown-menu-button-delete:hover {
+        background-color: var(--artemis-color-warning-hover);
+    }
+    .dropdown-menu-button-delete:focus {
+        background-color: var(--artemis-color-warning-focus);
+    }
+
+.popup-menu-button {
+    width: 100%;
+    box-shadow: inset 0px -2px 2px 1px rgba(20, 20, 20, 0.6);
+    border-bottom-left-radius: 0.5rem;
+    background-color: var(--artemis-color-foreground);
+}
+    .popup-menu-button:hover {
+        background-color: var(--artemis-color-hover);
+    }
+
+.popup-menu-button-delete {
+    width: 30%;
+    box-shadow: inset 0px -2px 2px 1px rgba(20, 20, 20, 0.6);
+    border-bottom-right-radius: 0.5rem;
+    background-color: var(--artemis-color-warning);
+}
+    .popup-menu-button-delete:hover {
+        background-color: var(--artemis-color-warning-hover);
+    }
+/*################################################################################*/
+
+/* Anchor Tag and Link Text */
+
+/*################################################################################*/
+
+/* Cursor */
+.pointer {
+    cursor: pointer;
+}
+/*################################################################################*/

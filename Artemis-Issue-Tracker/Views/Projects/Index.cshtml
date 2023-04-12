@@ -1,82 +1,107 @@
 ﻿@model IEnumerable<Artemis_Issue_Tracker.Models.Project>
 @using X.PagedList
 @using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 
 @{
     ViewData["Title"] = "Index";
+
+    var renderOptions = new PagedListRenderOptions
+            {
+                LiElementClasses = new List<string> { "page-item" },
+                ContainerDivClasses = new List<string> { "pagination-container" },
+                PageClasses = new List<string> { "page-link" },
+                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                MaximumPageNumbersToDisplay = 10,
+                LinkToFirstPageFormat = "&laquo;",
+                LinkToPreviousPageFormat = "&lsaquo;",
+                LinkToNextPageFormat = "&rsaquo;",
+                LinkToLastPageFormat = "&raquo;",
+                EllipsesFormat = "...",
+            };
 }
 
-<link rel="stylesheet" href="~/css/ProjectSettingsMenu.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/ProjectDeleteMenu.css" asp-append-version="true" />
-<link rel="stylesheet" href="~/css/Project.css" asp-append-version="true" />
+<div class="view-header">
+    <h1 class="view-title">Projects</h1>
 
-<div class="project-header">
-    <div class="project-title">
-        <h1 class="text-light">Projects</h1>
-    </div>
-
-    <div class="project-create-button">
-        <svg class="project-create-button-icon" height="20" width="20" viewBox="0 0 20 20">
-            <g>
-                <circle cx="10" cy="10" r="9" stroke="white" stroke-width="2" fill="none"/>
-                <line x1="5" y1="10" x2="15" y2="10" stroke="white" stroke-width="2"/>
-                <line x1="10" y1="5" x2="10" y2="15" stroke="white" stroke-width="2"/>
-            </g>
-        </svg>
-        <a class="text-light" asp-action="Create">Create New</a>
+    <div class="button-container">
+        <a class="button-create" asp-action="Create">
+            <svg class="button-icon" height="20" width="20" viewBox="0 0 20 20">
+                <g>
+                    <circle cx="10" cy="10" r="9" stroke-width="2" fill="none" />
+                    <line x1="5" y1="10" x2="15" y2="10" stroke-width="2"/>
+                    <line x1="10" y1="5" x2="10" y2="15" stroke-width="2"/>
+                </g>
+            </svg>
+            <p>Create New</p>
+        </a>
     </div>
 </div>
 
 <!-- Need to make this a dynamic search bar in furture sprint-->
-<div>
+<div class="search-container">
     <form asp-controller="Projects" asp-action="Index">
-        <input class="projects-search" type="search" name="searchTerm"/>
+        <input class="search-field" type="search" name="searchTerm"/>
     </form>
 </div>
 
-<table class="table text-light">
+<table class="table">
     <thead>
-        <tr class="table-header-hover">
+        <tr>
             <th>
-                <label class="text-light">@Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter })</label>
+                @Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th>
-                <label class="text-light">Summary</label>
+                <label>Summary</label>
             </th>
             <th>
-                <label class="text-light">@Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })</label>
+                @Html.ActionLink("Creation Date", "Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter })
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr class="table-row-hover">
-            <td class="pointer">
-                <a class="text-light link-block underline-hover" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td class="pointer">
-                <a class="text-light link-block" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Summary)</a>
-            </td>
-            <td class="pointer">
-                <a class="text-light link-block" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</a>
-            </td>
-            <td>
-                <div class="project-settings-button" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
-                    <svg width="24px" height="24px" viewBox="0 0 24 24">
-                        <g fill="currentColor" fill-rule="evenodd">
-                            <circle cx="5" cy="12" r="2"></circle>
-                            <circle cx="12" cy="12" r="2"></circle>
-                            <circle cx="19" cy="12" r="2"></circle>
-                        </g>
-                    </svg>
-                </div>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    <a asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(modelItem => item.Summary)</label>
+                </td>
+                <td>
+                    <label>@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</label>
+                </td>
+                <td>
+                    <div class="button-container">
+                        <button class="button-threedot" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
+                            <svg width="24px" height="24px" viewBox="0 0 24 24">
+                                <g fill="currentColor" fill-rule="evenodd">
+                                    <circle cx="5" cy="12" r="2"></circle>
+                                    <circle cx="12" cy="12" r="2"></circle>
+                                    <circle cx="19" cy="12" r="2"></circle>
+                                </g>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+@Html.PagedListPager(
+    (IPagedList) Model, 
+    page => Url.Action("Index", 
+    new { 
+        page, 
+        sortOrder = ViewBag.CurrentSort, 
+        currentFilter = ViewBag.CurrentFilter}),
+        renderOptions
+    )
 
 <script src="~/js/DropdownMenu.js" asp-append-version="true"></script>
 <script src="~/js/PopupMenu.js" asp-append-version="true"></script>

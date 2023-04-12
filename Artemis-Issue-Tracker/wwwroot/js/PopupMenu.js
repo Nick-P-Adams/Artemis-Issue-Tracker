@@ -23,18 +23,18 @@
 
     populateMenu(itemId) {
         if (this.populateMenu.className = "project-delete-menu") {
-            let title = `<div class="project-delete-menu-title"><h1>Delete Project?</h1></div>`;
+            let title = `<div class="popup-menu-title"><h1>Delete Project?</h1></div>`;
 
-            let body = `<div class="project-delete-menu-body"><p>Warning! Are you sure you want to delete this project? \
+            let body = `<div class="popup-menu-body"><p>Warning! Are you sure you want to delete this project? \
                             Pressing delete will result in the project and everything under it being permanently deleted</p></div>`;
 
             let cancelButton = document.createElement("div");
-            cancelButton.className = "project-delete-cancel-button text-light";
+            cancelButton.className = "popup-menu-button";
             cancelButton.onclick = this.removeMenu.bind(this);
             cancelButton.innerText = "Cancel";
 
             let deleteButton = document.createElement("form");
-            deleteButton.className = "project-delete-delete-button";
+            deleteButton.className = "popup-menu-button-delete";
             deleteButton.action = "/Projects/Delete";
             deleteButton.method = "post";
 
@@ -56,7 +56,7 @@
             deleteButton.append(inputValue, inputSubmit, inputToken);
 
             let buttonContainer = document.createElement("div");
-            buttonContainer.className = "project-delete-menu-button-container";
+            buttonContainer.className = "popup-menu-button-container";
 
             buttonContainer.append(cancelButton, deleteButton);
 

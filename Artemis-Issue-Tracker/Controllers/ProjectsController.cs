@@ -63,7 +63,7 @@ namespace Artemis_Issue_Tracker.Controllers
             }
 
             int pageNumber = page ?? 1,
-                pageSize = 5;
+                pageSize = 8;
 
             // The ProjectIndexViewModel at the moment is not neccessary atm
             // However, it may be useful in the future if I need to pass more than just the Project model info to the view
