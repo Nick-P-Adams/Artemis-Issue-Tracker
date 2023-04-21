@@ -49,11 +49,11 @@
     </form>
 </div>
 
-<table class="table">
+<table class="table table-sortable">
     <thead>
         <tr>
             <th>
-                @Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Project Name", "Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter}, new {@class = ViewBag.CurrentSort == "title_ascend" ? "asc" : ViewBag.CurrentSort == "title_descend" ? "desc" : "" })
             </th>
             <th>
                 <label>Summary</label>

@@ -119,6 +119,48 @@ th a:hover,
 tbody tr:hover {
     background-color: var(--artemis-color-hover);
 }
+
+.table-sortable th a {
+    position: relative;
+    display: inline-block;
+    padding-right: 16px;
+}
+    .table-sortable th a:after {
+        content:"";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        margin-top: -6px;
+        border-width: 6px;
+        border-style: solid;
+        border-color: transparent transparent #fff;
+    }
+
+.table-sortable th a.asc:after {
+    color: #fff;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #000 transparent transparent;
+    opacity: 1;
+}
+
+.table-sortable th a.desc:before {
+    color: #fff;
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -4px;
+    border-width: 4px;
+    border-style: solid;
+    border-color: transparent transparent #000;
+    opacity: 1;
+}
 /*################################################################################*/
 
 /* Pagination */
@@ -265,7 +307,7 @@ input[type="submit"] {
     margin-top: auto;
     margin-bottom: auto;
     text-decoration: none;
-    box-shadow: inset 0px 0.5px 4px 2px rgba(20, 20, 20, 0.8);
+    box-shadow: inset 0px 0px 2px 0.5px rgba(20, 20, 20, 0.8);
     transition: background-color 0.25s ease-in-out;
 }
     .button-create p {
