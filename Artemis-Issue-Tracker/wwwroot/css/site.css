@@ -8,6 +8,7 @@
     --artemis-color-foreground: #313131;
     --artemis-color-midground: #282828;
     --artemis-color-background: #232323;
+    --artemis-color-disabled: #4e4e4e;
     --artemis-color-hover: #404040;
     --artemis-color-hover-light: #606060;
     --artemis-color-focus: #8a8a8a;
@@ -56,6 +57,12 @@ footer {
 /*################################################################################*/
 
 /* View Layout */
+.projects {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 0.8rem;
+}
+
 .view-header {
     display: flex;
     flex-direction: row;
@@ -109,23 +116,47 @@ td {
     border: none;
 }
 
-th *,
 td *:not(svg, div) {
     padding: 0.4rem 0.4rem;
     display: block;
 }
 
-th a:hover,
+.sortable-table-header:hover,
 tbody tr:hover {
     background-color: var(--artemis-color-hover);
 }
 
-.table-sortable th a {
+th a {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sortable-table-header {
+    padding: 0.3rem 0.3rem;
+}
+
+.sort-icon {
+    align-self: center;
+}
+
+.sort-indicator {
+    fill: var(--artemis-color-disabled);
+}
+
+.asc .sort-icon .sort-indicator:first-child {
+    fill: #fff;
+}
+.desc .sort-icon .sort-indicator:last-child {
+    fill: #fff;
+}
+
+/* Example to be removed
+th a {
     position: relative;
     display: inline-block;
     padding-right: 16px;
 }
-    .table-sortable th a:after {
+    th a:after {
         content:"";
         position: absolute;
         top: 50%;
@@ -136,7 +167,7 @@ tbody tr:hover {
         border-color: transparent transparent #fff;
     }
 
-.table-sortable th a.asc:after {
+th a.asc:after {
     color: #fff;
     content: "";
     position: absolute;
@@ -149,7 +180,7 @@ tbody tr:hover {
     opacity: 1;
 }
 
-.table-sortable th a.desc:before {
+.th a.desc:before {
     color: #fff;
     content: "";
     position: absolute;
@@ -161,6 +192,7 @@ tbody tr:hover {
     border-color: transparent transparent #000;
     opacity: 1;
 }
+*/
 /*################################################################################*/
 
 /* Pagination */
@@ -281,6 +313,12 @@ input[type="submit"] {
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+.search-field {
+    border: 2px solid var(--artemis-border-dark);
+    background: var(--artemis-color-hover);
+    border-radius: 0.3rem;
 }
 
 .button-container {
