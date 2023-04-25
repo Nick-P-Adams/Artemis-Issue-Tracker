@@ -5,8 +5,8 @@
         public int Id { get; set; }
         public String Title { get; set; }
         public String Description { get; set; }
-        public int SprintLength { get; set; }
-        public int SprintCount { get; set; }
+        public String Summary { get; set; }
+        public DateTime CreationDate { get; set; }
 
         public Project(){}
     }

@@ -1,41 +1,129 @@
 ﻿@model IEnumerable<Artemis_Issue_Tracker.Models.Project>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 
 @{
     ViewData["Title"] = "Index";
-}
 
-<h1 class="text-light">Projects</h1>
-
-<p>
-    <a class="text-light" asp-action="Create">Create New</a>
-</p>
-<table class="table text-light">
-    <thead>
-        <tr>
-            <th>
-                <label class="text-light">Name</label>
-            </th>
-            <th>
-                <label class="text-light">Description</label>
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                    <a class="text-light" asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td class="text-light">
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                <a class="text-light" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a class="text-light" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a class="text-light" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
+    var renderOptions = new PagedListRenderOptions
+            {
+                LiElementClasses = new List<string> { "page-item" },
+                ContainerDivClasses = new List<string> { "pagination-container" },
+                PageClasses = new List<string> { "page-link" },
+                DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+                DisplayLinkToNextPage = PagedListDisplayMode.Always,
+                DisplayEllipsesWhenNotShowingAllPageNumbers = true,
+                MaximumPageNumbersToDisplay = 10,
+                LinkToFirstPageFormat = "&laquo;",
+                LinkToPreviousPageFormat = "&lsaquo;",
+                LinkToNextPageFormat = "&rsaquo;",
+                LinkToLastPageFormat = "&raquo;",
+                EllipsesFormat = "...",
+            };
 }
-    </tbody>
-</table>
+<div class="projects">
+    <div class="view-header">
+        <h1 class="view-title">Projects</h1>
+
+        <div class="button-container">
+            <a class="button-create" asp-action="Create">
+                <svg class="button-icon" height="20" width="20" viewBox="0 0 20 20">
+                    <g>
+                        <circle cx="10" cy="10" r="9" stroke-width="2" fill="none" />
+                        <line x1="5" y1="10" x2="15" y2="10" stroke-width="2"/>
+                        <line x1="10" y1="5" x2="10" y2="15" stroke-width="2"/>
+                    </g>
+                </svg>
+                <p>Create New</p>
+            </a>
+        </div>
+    </div>
+
+    <!-- Need to make this a dynamic search bar in furture sprint-->
+    <div class="search-container">
+        <form asp-controller="Projects" asp-action="Index">
+            <input class="search-field" type="search" name="searchTerm" oninput="document.querySelector('.search-icon').style.display = 'none', document.querySelector('.cancel-icon').style.display = 'initial'" />
+        </form>
+
+        <div class="search-icon">
+            <span class="bi bi-search" aria-hidden="true" onclick="document.querySelector('.search-field').focus()"></span>
+        </div>
+
+        <div class="cancel-icon">
+            <span class="bi bi-x" aria-hidden="true" onclick="document.querySelector('.search-icon').style.display = 'initial', document.querySelector('.cancel-icon').style.display = 'none', document.querySelector('.search-field').value = ''"></span>
+        </div>
+    </div>
+
+    <table class="artemis-table">
+        <thead>
+            <tr>
+                <th class="sortable-th">
+                    <a class="@(ViewBag.CurrentSort == "title_ascend" ? "asc" : ViewBag.CurrentSort == "title_descend" ? "desc" : "")" 
+                        href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter})">
+                        <label>Project Name</label>
+
+                        <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
+                            <polygon class="sort-indicator" points="2,5 7,0 12,5"/>
+                            <polygon class="sort-indicator" points="2,9 7,14 12,9"/>
+                        </svg>
+                    </a>
+                </th>
+                <th>
+                    <label>Summary</label>
+                </th>
+                <th class ="sortable-th">
+                    <a class="@(ViewBag.CurrentSort == null ? "asc" : ViewBag.CurrentSort == "date_descend" ? "desc" : "")"
+                        href="@Url.Action("Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter})">
+                        <label>Creation Date</label>
+
+                        <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
+                            <polygon class="sort-indicator" points="2,5 7,0 12,5"/>
+                            <polygon class="sort-indicator" points="2,9 7,14 12,9"/>
+                        </svg>
+                    </a>
+                </th>
+                <th class="sm-th"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        <a asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+                    </td>
+                    <td>
+                        <label>@Html.DisplayFor(modelItem => item.Summary)</label>
+                    </td>
+                    <td>
+                        <label>@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</label>
+                    </td>
+                    <td>
+                        <div class="button-container">
+                            <button class="button-threedot" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
+                                <svg width="24px" height="24px" viewBox="0 0 24 24">
+                                    <g fill="currentColor" fill-rule="evenodd">
+                                        <circle cx="5" cy="12" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="19" cy="12" r="2"/>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager(
+        (IPagedList) Model, 
+        page => Url.Action("Index", 
+        new { 
+            page, 
+            sortOrder = ViewBag.CurrentSort, 
+            currentFilter = ViewBag.CurrentFilter}),
+            renderOptions
+        )
+</div>

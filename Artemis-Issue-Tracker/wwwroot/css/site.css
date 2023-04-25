@@ -1,3 +1,26 @@
+:root {
+    /* Text Color */
+    --artemis-text-primary: #e5e5e5;
+    --artemis-text-link: #0d6efd;
+    --artemis-text-warning: #a40202;
+    --artemis-text-muted: #c5c5c5;
+    /* Site Colors */
+    --artemis-color-foreground: #313131;
+    --artemis-color-midground: #282828;
+    --artemis-color-background: #232323;
+    --artemis-color-disabled: #4e4e4e;
+    --artemis-color-hover: #404040;
+    --artemis-color-hover-light: #606060;
+    --artemis-color-focus: #8a8a8a;
+    --artemis-color-focus-blue: #06377e;
+    --artemis-color-warning: #a40202;
+    --artemis-color-warning-hover: #a75757;
+    --artemis-color-warning-focus: #c28989;
+    /* Misc Colors */
+    --artemis-border-dark: #101010;
+}
+
+/* Main Layout */
 html {
   font-size: 14px;
 }
@@ -8,11 +31,412 @@ html {
     }
 }
 
-html {
-
-}
-
 body {
-    margin-bottom: 60px;
-    background: #232323;
+    height: 100vh;
+    background-color: var(--artemis-color-background);
 }
+
+header {
+    height: 8%;
+}
+
+main {
+    height: 100%;
+}
+
+.view-container{
+    height: 88%;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+footer {
+    height: 4%;
+}
+/*################################################################################*/
+
+/* View Layout */
+.projects {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 0.8rem;
+}
+
+.view-header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    color: var(--artemis-text-primary);
+}
+
+.view-title {
+    width: 100%;
+}
+/*################################################################################*/
+
+
+/*################################################################################*/
+/* Site Elements */
+/*################################################################################*/
+
+/* Navbar */
+.navbar {
+    background-color: var(--artemis-color-foreground);
+    height: 100%;
+}
+/*################################################################################*/
+
+/* Tables */
+.artemis-table {
+    width: 100%;
+    margin: 1rem 0rem;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-bottom: 1px solid;
+    border-color: var(--artemis-text-primary);
+    color: var(--artemis-text-primary);
+}
+    .artemis-table th {
+        border-bottom: 1px solid;
+    }
+    .artemis-table td > *:not(div) {
+        padding: 0.4rem 0.4rem;
+        display: block;
+    }
+    .artemis-table a {
+        text-decoration: none;
+        color: var(--artemis-text-primary);
+    }
+    .artemis-table tbody a {
+        color: var(--artemis-text-link);
+    }
+        .artemis-table tbody a:hover {
+            text-decoration: underline;
+        }
+
+.sm-th {
+    width: 10%;
+}
+
+.sortable-th:hover,
+.artemis-table tbody tr:hover {
+    background-color: var(--artemis-color-hover);
+}
+
+.sortable-th {
+    width: 25%;
+}
+    .sortable-th a {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3rem 0.3rem;
+    }
+    .sortable-th label {
+        cursor: pointer;
+    }
+
+.sort-icon {
+    align-self: center;
+}
+
+.sort-indicator {
+    fill: var(--artemis-color-disabled);
+}
+
+.asc .sort-icon .sort-indicator:first-child {
+    fill: #fff;
+}
+.desc .sort-icon .sort-indicator:last-child {
+    fill: #fff;
+}
+/*################################################################################*/
+
+/* Pagination */
+.pagination-container {
+}
+
+.pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    place-content: center;
+}
+
+.page-link {
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-midground);
+    border: 1px solid var(--artemis-border-dark);
+    border-left: none;
+    border-right: none;
+    box-shadow: inset 0px 2px 6px 0px rgba(20, 20, 20, 0.6);
+    transition: background-color 0.25s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-link {
+        transition: none;
+    }
+}
+
+.page-link:hover {
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-hover);
+    border-color: var(--artemis-border-dark);
+}
+
+.page-link:focus {
+    background-color: var(--artemis-color-focus);
+    box-shadow: none;
+}
+
+.page-item.active .page-link {
+    color: var(--artemis-text-muted);
+    background-color: var(--artemis-color-background);
+    border-color: var(--artemis-border-dark);
+    pointer-events: none;
+    cursor: default;
+}
+
+.page-item.disabled .page-link {
+    color: var(--artemis-text-muted);
+    background-color: var(--artemis-color-background);
+    border-color: var(--artemis-border-dark);
+}
+
+.PagedList-skipToNext .page-link {
+    border-right: 1px solid var(--artemis-border-dark);
+}
+
+.PagedList-skipToPrevious .page-link {
+    border-left: 1px solid var(--artemis-border-dark);
+}
+/*################################################################################*/
+
+/* Menus, Buttons, and Fields */
+.project-settings-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    background-color: var(--artemis-color-background);
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
+    z-index: 350;
+}
+
+.project-delete-menu {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 35%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(100%, 23%);
+    background-color: var(--artemis-color-background);
+    color: var(--artemis-text-primary);
+    box-shadow: 0px 8px 16px 8px rgba(0,0,0,0.4);
+    z-index: 350;
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+}
+
+.popup-menu-title {
+    display: flex;
+    height: 20%;
+    place-content: center;
+}
+
+.popup-menu-body {
+    display: flex;
+    height: 65%;
+    text-align: center;
+}
+
+.popup-menu-button-container {
+    display: flex;
+    flex-direction: row;
+    height: 15%;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid var(--artemis-border-dark);
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+input[type="submit"] {
+    color: var(--artemis-text-primary);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* clean up the search field css */
+.search-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 25px;
+    margin-top: 0.5rem;
+    border: 2px solid var(--artemis-color-focus);
+    background: var(--artemis-color-hover);
+    border-radius: 0.3rem;
+    cursor: text;
+}
+    .search-container:hover {
+        background: var(--artemis-color-hover-light);
+    }
+    .search-container:focus-within {
+        border: 2px solid var(--artemis-color-focus-blue);
+    }
+
+.search-field {
+    color: #fff;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    color: #fff;
+    padding: 0px 6px 0px 2px;
+    width: 25px;
+}
+    .search-icon .bi {
+        vertical-align: middle;
+    }
+
+.cancel-icon {
+    display: none;
+    color: #fff;
+    padding: 0px 6px 0px 2px;
+    width: 25px;
+}
+
+    .cancel-icon .bi {
+        vertical-align: middle;
+        font-size: 15px;
+    }
+    .cancel-icon .bi:hover {
+        background: var(--artemis-color-focus);
+        cursor: pointer;
+    }
+
+.button-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.button-icon {
+    align-self: center;
+    padding: 2px;
+    stroke: var(--artemis-text-primary);
+}
+
+.button-create {
+    display: flex;
+    height: 32px;
+    width: 130px;
+    padding: 0px 10px 0px 10px;
+    color: var(--artemis-text-primary);
+    background-color: var(--artemis-color-midground);
+    border: 1px solid var(--artemis-border-dark);
+    border-radius: 2rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    box-shadow: inset 0px 0px 2px 0.5px rgba(20, 20, 20, 0.8);
+    transition: background-color 0.25s ease-in-out;
+}
+    .button-create p {
+        margin: auto;
+    }
+    .button-create:hover {
+        color: var(--artemis-text-primary);
+        background-color: var(--artemis-color-hover);
+    }
+    .button-create:focus {
+        background-color: var(--artemis-color-focus);
+    }
+
+.button-threedot {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    color: var(--artemis-text-primary);
+    background-color: transparent;
+    transition: background-color 0.15s ease-in-out;
+}
+    .button-threedot:hover {
+        background-color: var(--artemis-color-focus);
+    }
+    .button-threedot:focus {
+        color: var(--artemis-text-link);
+        background-color: var(--artemis-color-focus-blue);
+    }
+
+.dropdown-menu-button {
+    color: var(--artemis-text-primary);
+    text-decoration: none;
+    text-align: center;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+    .dropdown-menu-button:hover {
+        color: var(--artemis-text-primary);
+        background-color: var(--artemis-color-hover-light);
+    }
+    .dropdown-menu-button:focus {
+        background-color: var(--artemis-color-focus);
+    }
+
+.dropdown-menu-button-delete {
+    color: var(--artemis-text-primary);
+    text-align: center;
+    padding: 8px 4px;
+    cursor: pointer;
+}
+    .dropdown-menu-button-delete:hover {
+        background-color: var(--artemis-color-warning-hover);
+    }
+    .dropdown-menu-button-delete:focus {
+        background-color: var(--artemis-color-warning-focus);
+    }
+
+.popup-menu-button {
+    width: 100%;
+    box-shadow: inset 0px -2px 2px 1px rgba(20, 20, 20, 0.6);
+    border-bottom-left-radius: 0.5rem;
+    background-color: var(--artemis-color-foreground);
+}
+    .popup-menu-button:hover {
+        background-color: var(--artemis-color-hover);
+    }
+
+.popup-menu-button-delete {
+    width: 30%;
+    box-shadow: inset 0px -2px 2px 1px rgba(20, 20, 20, 0.6);
+    border-bottom-right-radius: 0.5rem;
+    background-color: var(--artemis-color-warning);
+}
+    .popup-menu-button-delete:hover {
+        background-color: var(--artemis-color-warning-hover);
+    }
+/*################################################################################*/
+
+/* Anchor Tag and Link Text */
+
+/*################################################################################*/
+
+/* Cursor */
+.pointer {
+    cursor: pointer;
+}
+/*################################################################################*/

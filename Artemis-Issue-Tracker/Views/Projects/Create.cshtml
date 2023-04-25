@@ -4,33 +4,33 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1 class="text-light">Create</h1>
 
-<h4>New Project</h4>
+<h4 class="text-light">New Project</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Title" class="control-label">Name</label>
+                <label asp-for="Title" class="control-label text-light">Title</label>
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label">Description</label>
+                <label asp-for="Description" class="control-label text-light">Description</label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SprintLength" class="control-label">Sprint Length (Days)</label>
-                <input asp-for="SprintLength" class="form-control" />
-                <span asp-validation-for="SprintLength" class="text-danger"></span>
+                <label asp-for="Summary" class="control-label text-light">Summary</label>
+                <input asp-for="Summary" class="form-control" />
+                <span asp-validation-for="Summary" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SprintCount" class="control-label">Estimate Sprint Count</label>
-                <input asp-for="SprintCount" class="form-control" />
-                <span asp-validation-for="SprintCount" class="text-danger"></span>
+                <label asp-for="CreationDate" class="control-label text-light">Creation Date</label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -40,7 +40,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="text-light" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
