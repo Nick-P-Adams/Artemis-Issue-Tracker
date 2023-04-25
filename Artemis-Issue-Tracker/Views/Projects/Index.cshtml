@@ -45,43 +45,47 @@
     <!-- Need to make this a dynamic search bar in furture sprint-->
     <div class="search-container">
         <form asp-controller="Projects" asp-action="Index">
-            <input class="search-field" type="search" name="searchTerm"/>
+            <input class="search-field" type="search" name="searchTerm" oninput="document.querySelector('.search-icon').style.display = 'none', document.querySelector('.cancel-icon').style.display = 'initial'" />
         </form>
+
+        <div class="search-icon">
+            <span class="bi bi-search" aria-hidden="true" onclick="document.querySelector('.search-field').focus()"></span>
+        </div>
+
+        <div class="cancel-icon">
+            <span class="bi bi-x" aria-hidden="true" onclick="document.querySelector('.search-icon').style.display = 'initial', document.querySelector('.cancel-icon').style.display = 'none', document.querySelector('.search-field').value = ''"></span>
+        </div>
     </div>
 
-    <table class="table">
+    <table class="artemis-table">
         <thead>
             <tr>
-                <th>
-                    <div class="sortable-table-header">
-                        <a class="@(ViewBag.CurrentSort == "title_ascend" ? "asc" : ViewBag.CurrentSort == "title_descend" ? "desc" : "")" 
-                           href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter})">
-                            <label>Project Name</label>
+                <th class="sortable-th">
+                    <a class="@(ViewBag.CurrentSort == "title_ascend" ? "asc" : ViewBag.CurrentSort == "title_descend" ? "desc" : "")" 
+                        href="@Url.Action("Index", new { sortOrder = ViewBag.TitleSort, currentFilter = ViewBag.CurrentFilter})">
+                        <label>Project Name</label>
 
-                            <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
-                                <polygon class="sort-indicator" points="2,5 7,0 12,5" />
-                                <polygon class="sort-indicator" points="2,9 7,14 12,9" />
-                            </svg>
-                        </a>
-                    </div>
+                        <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
+                            <polygon class="sort-indicator" points="2,5 7,0 12,5"/>
+                            <polygon class="sort-indicator" points="2,9 7,14 12,9"/>
+                        </svg>
+                    </a>
                 </th>
                 <th>
                     <label>Summary</label>
                 </th>
-                <th>
-                    <div class="sortable-table-header">
-                        <a class="@(ViewBag.CurrentSort == null ? "asc" : ViewBag.CurrentSort == "date_descend" ? "desc" : "")"
-                           href="@Url.Action("Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter})">
-                            <label>Creation Date</label>
+                <th class ="sortable-th">
+                    <a class="@(ViewBag.CurrentSort == null ? "asc" : ViewBag.CurrentSort == "date_descend" ? "desc" : "")"
+                        href="@Url.Action("Index", new { sortOrder = ViewBag.DateSort, currentFilter = ViewBag.CurrentFilter})">
+                        <label>Creation Date</label>
 
-                            <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
-                                <polygon class="sort-indicator" points="2,5 7,0 12,5" />
-                                <polygon class="sort-indicator" points="2,9 7,14 12,9" />
-                            </svg>
-                        </a>
-                    </div>
+                        <svg class="sort-icon" width="14px" height="14px" viewBox="0 0 14 14">
+                            <polygon class="sort-indicator" points="2,5 7,0 12,5"/>
+                            <polygon class="sort-indicator" points="2,9 7,14 12,9"/>
+                        </svg>
+                    </a>
                 </th>
-                <th></th>
+                <th class="sm-th"></th>
             </tr>
         </thead>
         <tbody>
@@ -101,9 +105,9 @@
                             <button class="button-threedot" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
                                 <svg width="24px" height="24px" viewBox="0 0 24 24">
                                     <g fill="currentColor" fill-rule="evenodd">
-                                        <circle cx="5" cy="12" r="2"></circle>
-                                        <circle cx="12" cy="12" r="2"></circle>
-                                        <circle cx="19" cy="12" r="2"></circle>
+                                        <circle cx="5" cy="12" r="2"/>
+                                        <circle cx="12" cy="12" r="2"/>
+                                        <circle cx="19" cy="12" r="2"/>
                                     </g>
                                 </svg>
                             </button>

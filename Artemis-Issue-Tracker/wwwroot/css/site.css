@@ -88,52 +88,54 @@ footer {
 /*################################################################################*/
 
 /* Tables */
-.table {
+.artemis-table {
     width: 100%;
+    margin: 1rem 0rem;
+    table-layout: fixed;
     border-collapse: separate;
     border-spacing: 0;
-    table-layout: fixed;
     border-bottom: 1px solid;
     border-color: var(--artemis-text-primary);
     color: var(--artemis-text-primary);
 }
-    .table > * > tr > * {
-        padding: 0;
-        vertical-align: middle;
+    .artemis-table th {
+        border-bottom: 1px solid;
     }
-    .table a {
+    .artemis-table td > *:not(div) {
+        padding: 0.4rem 0.4rem;
+        display: block;
+    }
+    .artemis-table a {
         text-decoration: none;
         color: var(--artemis-text-primary);
     }
-    .table tbody a {
+    .artemis-table tbody a {
         color: var(--artemis-text-link);
     }
-        .table tbody a:hover {
+        .artemis-table tbody a:hover {
             text-decoration: underline;
         }
 
-td {
-    border: none;
+.sm-th {
+    width: 10%;
 }
 
-td *:not(svg, div) {
-    padding: 0.4rem 0.4rem;
-    display: block;
-}
-
-.sortable-table-header:hover,
-tbody tr:hover {
+.sortable-th:hover,
+.artemis-table tbody tr:hover {
     background-color: var(--artemis-color-hover);
 }
 
-th a {
-    display: flex;
-    justify-content: space-between;
+.sortable-th {
+    width: 25%;
 }
-
-.sortable-table-header {
-    padding: 0.3rem 0.3rem;
-}
+    .sortable-th a {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.3rem 0.3rem;
+    }
+    .sortable-th label {
+        cursor: pointer;
+    }
 
 .sort-icon {
     align-self: center;
@@ -149,50 +151,6 @@ th a {
 .desc .sort-icon .sort-indicator:last-child {
     fill: #fff;
 }
-
-/* Example to be removed
-th a {
-    position: relative;
-    display: inline-block;
-    padding-right: 16px;
-}
-    th a:after {
-        content:"";
-        position: absolute;
-        top: 50%;
-        right: 0;
-        margin-top: -6px;
-        border-width: 6px;
-        border-style: solid;
-        border-color: transparent transparent #fff;
-    }
-
-th a.asc:after {
-    color: #fff;
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -4px;
-    border-width: 4px;
-    border-style: solid;
-    border-color: #000 transparent transparent;
-    opacity: 1;
-}
-
-.th a.desc:before {
-    color: #fff;
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -4px;
-    border-width: 4px;
-    border-style: solid;
-    border-color: transparent transparent #000;
-    opacity: 1;
-}
-*/
 /*################################################################################*/
 
 /* Pagination */
@@ -308,18 +266,66 @@ th a.asc:after {
 }
 
 input[type="submit"] {
-    /* This style is is being used for form input submit */
     color: var(--artemis-text-primary);
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-.search-field {
-    border: 2px solid var(--artemis-border-dark);
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+
+/* clean up the search field css */
+.search-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 25px;
+    margin-top: 0.5rem;
+    border: 2px solid var(--artemis-color-focus);
     background: var(--artemis-color-hover);
     border-radius: 0.3rem;
+    cursor: text;
 }
+    .search-container:hover {
+        background: var(--artemis-color-hover-light);
+    }
+    .search-container:focus-within {
+        border: 2px solid var(--artemis-color-focus-blue);
+    }
+
+.search-field {
+    color: #fff;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+.search-icon {
+    color: #fff;
+    padding: 0px 6px 0px 2px;
+    width: 25px;
+}
+    .search-icon .bi {
+        vertical-align: middle;
+    }
+
+.cancel-icon {
+    display: none;
+    color: #fff;
+    padding: 0px 6px 0px 2px;
+    width: 25px;
+}
+
+    .cancel-icon .bi {
+        vertical-align: middle;
+        font-size: 15px;
+    }
+    .cancel-icon .bi:hover {
+        background: var(--artemis-color-focus);
+        cursor: pointer;
+    }
 
 .button-container {
     display: flex;
