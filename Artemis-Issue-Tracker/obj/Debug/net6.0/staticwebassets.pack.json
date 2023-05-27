@@ -37,6 +37,14 @@
       "PackagePath": "staticwebassets\\js\\TabPanel.js"
     },
     {
+      "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\package-lock.json",
+      "PackagePath": "staticwebassets\\js\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\package.json",
+      "PackagePath": "staticwebassets\\js\\package.json"
+    },
+    {
       "Id": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

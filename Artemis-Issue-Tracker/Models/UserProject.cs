@@ -1,16 +1,12 @@
-﻿using Microsoft.AspNetCore.SignalR;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Artemis_Issue_Tracker.Models
 {
     public class UserProject
     {
-        public string UserId { get; set; }
-
         [Key]
-        public int ProjectId { get; set; }
+        public string user_id { get; set; }
 
-        public UserProject() {}
+        public int project_id { get; set; }
     }
 }

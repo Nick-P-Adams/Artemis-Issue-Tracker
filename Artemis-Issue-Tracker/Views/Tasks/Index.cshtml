@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Artemis_Issue_Tracker.Models.Task>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/TabPanel.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Roadmap.css" asp-append-version="true" />
+
+<div class="tabContainer">
+    <div class="buttonContainer">
+        <button onclick="showPanel(0, '#232323')">Roadmap</button>
+        <button onclick="showPanel(1, '#232323')">Backlog</button>
+        <button onclick="showPanel(2, '#232323')">Overview</button>
+    </div>
+    <div class="tabPanel">
+        <div class="roadmap-container" id="roadmap-container">
+            <div class="date-container" id="date-container"></div>
+            <div class="task-container" id="task-container"></div>
+        </div>
+    </div>
+    <div class="tabPanel">Tab 2:Content</div>
+    <div class="tabPanel">Tab 3:Content</div>
+</div>
+
+<script src="~/js/TabPanel.js" asp-append-version="true"></script>
+<script src="~/js/Roadmap.js" asp-append-version="true"></script>

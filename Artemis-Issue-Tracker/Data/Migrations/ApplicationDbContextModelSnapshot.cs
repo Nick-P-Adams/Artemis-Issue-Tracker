@@ -22,116 +22,264 @@ namespace Artemis_Issue_Tracker.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Checklist", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Item")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("State")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Checklist");
-                });
-
             modelBuilder.Entity("Artemis_Issue_Tracker.Models.Comment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Item")
+                    b.Property<string>("comment")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("task_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("user_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("task_id");
+
+                    b.HasIndex("user_id");
 
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Issue", b =>
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Log", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<string>("AttachmentURL")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationDate")
+                    b.Property<DateTime>("created")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("log")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SprintCount")
+                    b.Property<int?>("task_id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Title")
+                    b.Property<string>("type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<string>("user_id")
+                        .HasColumnType("nvarchar(450)");
 
-                    b.ToTable("Issue");
+                    b.HasKey("id");
+
+                    b.HasIndex("task_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Log");
                 });
 
             modelBuilder.Entity("Artemis_Issue_Tracker.Models.Project", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<string>("Description")
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SprintCount")
-                        .HasColumnType("int");
+                    b.Property<bool>("favorite")
+                        .HasColumnType("bit");
 
-                    b.Property<int>("SprintLength")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
+                    b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<int>("progress")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("sprint_length")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
 
                     b.ToTable("Project");
                 });
 
-            modelBuilder.Entity("Artemis_Issue_Tracker.Models.UserProject", b =>
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Resource", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("ProjectId")
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.HasKey("UserId");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<int?>("comment_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("option")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("task_id")
+                        .HasColumnType("int");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("uri")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("user_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("comment_id");
+
+                    b.HasIndex("task_id");
+
+                    b.HasIndex("user_id");
+
+                    b.ToTable("Resource");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Sprint", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("end")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("project_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("start")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("project_id");
+
+                    b.ToTable("Sprint");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Task", b =>
+                {
+                    b.Property<int>("id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
+
+                    b.Property<DateTime>("created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("end")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("parent_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("parentid")
+                        .HasColumnType("int");
+
+                    b.Property<int>("position")
+                        .HasColumnType("int");
+
+                    b.Property<int>("priority")
+                        .HasColumnType("int");
+
+                    b.Property<int>("progress")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("project_id")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("sprint_id")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("start")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("time_estimate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("time_log")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("type")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("id");
+
+                    b.HasIndex("parentid");
+
+                    b.HasIndex("project_id");
+
+                    b.HasIndex("sprint_id");
+
+                    b.ToTable("Task");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.UserProject", b =>
+                {
+                    b.Property<string>("user_id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("project_id")
+                        .HasColumnType("int");
+
+                    b.HasKey("user_id");
 
                     b.ToTable("UserProject");
                 });
@@ -338,6 +486,89 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Comment", b =>
+                {
+                    b.HasOne("Artemis_Issue_Tracker.Models.Task", "task")
+                        .WithMany("comments")
+                        .HasForeignKey("task_id");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "user")
+                        .WithMany()
+                        .HasForeignKey("user_id");
+
+                    b.Navigation("task");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Log", b =>
+                {
+                    b.HasOne("Artemis_Issue_Tracker.Models.Task", "task")
+                        .WithMany("logs")
+                        .HasForeignKey("task_id");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "user")
+                        .WithMany()
+                        .HasForeignKey("user_id");
+
+                    b.Navigation("task");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Resource", b =>
+                {
+                    b.HasOne("Artemis_Issue_Tracker.Models.Comment", "comment")
+                        .WithMany("resources")
+                        .HasForeignKey("comment_id");
+
+                    b.HasOne("Artemis_Issue_Tracker.Models.Task", "task")
+                        .WithMany("resources")
+                        .HasForeignKey("task_id");
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "user")
+                        .WithMany()
+                        .HasForeignKey("user_id");
+
+                    b.Navigation("comment");
+
+                    b.Navigation("task");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Sprint", b =>
+                {
+                    b.HasOne("Artemis_Issue_Tracker.Models.Project", "project")
+                        .WithMany("sprints")
+                        .HasForeignKey("project_id")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("project");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Task", b =>
+                {
+                    b.HasOne("Artemis_Issue_Tracker.Models.Task", "parent")
+                        .WithMany("sub_tasks")
+                        .HasForeignKey("parentid");
+
+                    b.HasOne("Artemis_Issue_Tracker.Models.Project", "project")
+                        .WithMany("tasks")
+                        .HasForeignKey("project_id");
+
+                    b.HasOne("Artemis_Issue_Tracker.Models.Sprint", "sprint")
+                        .WithMany("tasks")
+                        .HasForeignKey("sprint_id");
+
+                    b.Navigation("parent");
+
+                    b.Navigation("project");
+
+                    b.Navigation("sprint");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -387,6 +618,34 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Comment", b =>
+                {
+                    b.Navigation("resources");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Project", b =>
+                {
+                    b.Navigation("sprints");
+
+                    b.Navigation("tasks");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Sprint", b =>
+                {
+                    b.Navigation("tasks");
+                });
+
+            modelBuilder.Entity("Artemis_Issue_Tracker.Models.Task", b =>
+                {
+                    b.Navigation("comments");
+
+                    b.Navigation("logs");
+
+                    b.Navigation("resources");
+
+                    b.Navigation("sub_tasks");
                 });
 #pragma warning restore 612, 618
         }
