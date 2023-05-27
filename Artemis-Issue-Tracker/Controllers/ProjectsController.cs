@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using System.Data;
 using X.PagedList;
+using System.Diagnostics;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -37,28 +38,28 @@ namespace Artemis_Issue_Tracker.Controllers
             var currentUserId = _userManager.GetUserId(User);
             var projects = from p in _context.Project
                            join up in _context.UserProject
-                           on p.Id equals up.ProjectId
-                           where up.UserId == currentUserId
+                           on p.id equals up.project_id
+                           where up.user_id == currentUserId
                            select p;
 
             if (!String.IsNullOrEmpty(searchTerm))
             {
-                projects = projects.Where(p => p.Title.Contains(searchTerm));
+                projects = projects.Where(p => p.name.Contains(searchTerm));
             }
 
             switch (sortOrder)
             {
                 case "title_ascend":
-                    projects = projects.OrderBy(p => p.Title);
+                    projects = projects.OrderBy(p => p.name);
                     break;
                 case "title_descend":
-                    projects = projects.OrderByDescending(p => p.Title);
+                    projects = projects.OrderByDescending(p => p.name);
                     break;
                 case "date_descend":
-                    projects = projects.OrderByDescending(p => p.CreationDate);
+                    projects = projects.OrderByDescending(p => p.created);
                     break;
                 default:
-                    projects = projects.OrderBy(p => p.CreationDate);
+                    projects = projects.OrderBy(p => p.created);
                     break;
             }
 
@@ -84,7 +85,7 @@ namespace Artemis_Issue_Tracker.Controllers
             }
 
             var project = await _context.Project
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.id == id);
             if (project == null)
             {
                 return NotFound();
@@ -108,7 +109,7 @@ namespace Artemis_Issue_Tracker.Controllers
         // Need to add the project id and user id to the UserProject table here 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Summary,CreationDate")] Project project)
+        public async Task<IActionResult> Create([Bind("id,name,description,type,progress,favorite,sprint_length,created")] Project project)
         {
             if (ModelState.IsValid)
             {
@@ -116,7 +117,7 @@ namespace Artemis_Issue_Tracker.Controllers
                 await _context.SaveChangesAsync();
 
                 var currentUserId = _userManager.GetUserId(User);
-                var userProject = new UserProject() { UserId = currentUserId, ProjectId = project.Id };
+                var userProject = new UserProject() { user_id = currentUserId, project_id = project.id };
 
                 _context.UserProject.Add(userProject);
                 await _context.SaveChangesAsync();
@@ -148,9 +149,9 @@ namespace Artemis_Issue_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,Summary,CreationDate")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("id,name,description,type,progress,favorite,sprint_length,created")] Project project)
         {
-            if (id != project.Id)
+            if (id != project.id)
             {
                 return NotFound();
             }
@@ -186,7 +187,7 @@ namespace Artemis_Issue_Tracker.Controllers
             }
 
             var project = await _context.Project
-                .FirstOrDefaultAsync(m => m.Id == id);
+                .FirstOrDefaultAsync(m => m.id == id);
 
             if (project == null)
             {
@@ -215,7 +216,7 @@ namespace Artemis_Issue_Tracker.Controllers
                     }
 
                     var userProject = await _context.UserProject
-                                            .Where(up => up.ProjectId == project.Id && up.UserId == currentUserId)
+                                            .Where(up => up.project_id == project.id && up.user_id == currentUserId)
                                             .SingleAsync();
 
                     if (userProject == null)
@@ -243,7 +244,7 @@ namespace Artemis_Issue_Tracker.Controllers
 
         private bool ProjectExists(int id)
         {
-          return _context.Project.Any(e => e.Id == id);
+          return _context.Project.Any(e => e.id == id);
         }
     }
 }

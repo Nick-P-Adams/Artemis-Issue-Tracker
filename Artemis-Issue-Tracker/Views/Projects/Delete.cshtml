@@ -12,33 +12,51 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            <label class="text-light">Title</label>
+            <label class="text-light">Name</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.Title)
+            @Html.DisplayFor(model => model.name)
         </dd>
         <dt class = "col-sm-2">
             <label class="text-light">Description</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.description)
         </dd>
         <dt class = "col-sm-2">
-            <label class="text-light">Sprint Length (Days)</label>
+            <label class="text-light">Type</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.Summary)
+            @Html.DisplayFor(model => model.type)
         </dd>
         <dt class = "col-sm-2">
-            <label class="text-light">Sprint Count Estimate</label>
+            <label class="text-light">Progress</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.CreationDate)
+            @Html.DisplayFor(model => model.progress)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Favorite</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.favorite)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Sprint Length</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.sprint_length)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Created</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.created)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="id" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a class="text-light" asp-action="Index">Back to List</a>
     </form>

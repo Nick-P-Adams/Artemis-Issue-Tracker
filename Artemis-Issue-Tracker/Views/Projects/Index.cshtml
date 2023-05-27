@@ -72,7 +72,7 @@
                     </a>
                 </th>
                 <th>
-                    <label>Summary</label>
+                    <label>Type</label>
                 </th>
                 <th class ="sortable-th">
                     <a class="@(ViewBag.CurrentSort == null ? "asc" : ViewBag.CurrentSort == "date_descend" ? "desc" : "")"
@@ -92,17 +92,17 @@
             @foreach (var item in Model) {
                 <tr>
                     <td>
-                        <a asp-area="" asp-controller="Issues" asp-action="Index">@Html.DisplayFor(modelItem => item.Title)</a>
+                        <a asp-area="" asp-controller="Tasks" asp-action="Index">@Html.DisplayFor(modelItem => item.name)</a>
                     </td>
                     <td>
-                        <label>@Html.DisplayFor(modelItem => item.Summary)</label>
+                        <label>@Html.DisplayFor(modelItem => item.type)</label>
                     </td>
                     <td>
-                        <label>@Html.DisplayFor(modelItem => item.CreationDate, "DateTime")</label>
+                        <label>@Html.DisplayFor(modelItem => item.created, "DateTime")</label>
                     </td>
                     <td>
                         <div class="button-container">
-                            <button class="button-threedot" id="project-settings-button @item.Id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.Id', 'project-settings-menu', '@item.Id')">
+                            <button class="button-threedot" id="project-settings-button @item.id" onclick="dropdownMenu.displayDropdown('project-settings-button @item.id', 'project-settings-menu', '@item.id')">
                                 <svg width="24px" height="24px" viewBox="0 0 24 24">
                                     <g fill="currentColor" fill-rule="evenodd">
                                         <circle cx="5" cy="12" r="2"/>

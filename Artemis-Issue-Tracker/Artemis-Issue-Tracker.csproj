@@ -6,6 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>aspnet-Artemis_Issue_Tracker-dc7eba05-5778-4239-bce0-256950fc13d6</UserSecretsId>
     <RootNamespace>Artemis_Issue_Tracker</RootNamespace>
+    <ErrorReport>prompt</ErrorReport>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
   </PropertyGroup>
 
   <ItemGroup>

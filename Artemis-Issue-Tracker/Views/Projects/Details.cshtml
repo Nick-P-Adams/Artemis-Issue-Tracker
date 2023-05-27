@@ -10,33 +10,51 @@
     <h4 class="text-light">Project</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
-            <label class="text-light">Title</label>
+        <dt class="col-sm-2">
+            <label class="text-light">Name</label>
         </dt>
-        <dd class="col-sm-10  text-light">
-            @Html.DisplayFor(model => model.Title)
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.name)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             <label class="text-light">Description</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.description)
         </dd>
-        <dt class = "col-sm-2">
-            <label class="text-light">Summary</label>
+        <dt class="col-sm-2">
+            <label class="text-light">Type</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.Summary)
+            @Html.DisplayFor(model => model.type)
         </dd>
-        <dt class = "col-sm-2">
-            <label class="text-light">Creation Date</label>
+        <dt class="col-sm-2">
+            <label class="text-light">Progress</label>
         </dt>
         <dd class="col-sm-10 text-light">
-            @Html.DisplayFor(model => model.CreationDate)
+            @Html.DisplayFor(model => model.progress)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Favorite</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.favorite)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Sprint Length</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.sprint_length)
+        </dd>
+        <dt class="col-sm-2">
+            <label class="text-light">Created</label>
+        </dt>
+        <dd class="col-sm-10 text-light">
+            @Html.DisplayFor(model => model.created)
         </dd>
     </dl>
 </div>
 <div>
-    <a class="text-light" asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a class="text-light" asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
     <a class="text-light" asp-action="Index">Back to List</a>
 </div>
