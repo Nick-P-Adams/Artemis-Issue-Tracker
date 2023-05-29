@@ -1,13 +1,13 @@
-﻿.tabContainer {
+﻿.tab-container {
     height: 100%;
     width: 100%;
 }
 
-.tabContainer .buttonContainer {
+.tab-container .tab-bar {
     height: 8%;
 }
 
-.tabContainer .buttonContainer button {
+.tab-container .tab-bar button {
     width: calc(100%/3);
     height: 100%;
     float: left;
@@ -15,22 +15,23 @@
     outline: none;
     cursor: pointer;
     padding: 10px;
-    font-family: sans-serif;
-    font-size: 18px;
     background-color: #282828;
 }
 
-.tabContainer .buttonContainer button:hover {
+.tab-container .tab-bar button:hover {
     background-color: #404040;
 }
 
-.tabContainer .tabPanel {
+.tab-container .tab-panel {
     height: 92%;
     background-color: grey;
     color: white;
-    text-align: center;
     padding-top: 10px;
-    font-family: sans-serif;
-    font-size: 22px;
     display: none;
+}
+
+.backlog {
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: 0.8rem;
 }

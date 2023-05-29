@@ -276,6 +276,23 @@ input[type="search"]::-webkit-search-cancel-button {
     -webkit-appearance: none;
 }
 
+.filter-container
+{
+    display: flex;
+    flex-direction: row;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    height: 25px;
+    margin-top: 0.5rem;
+    border: 2px solid var(--artemis-color-focus);
+    background: var(--artemis-color-hover);
+    border-radius: 0.3rem;
+}
+
 /* clean up the search field css */
 .search-container {
     display: flex;

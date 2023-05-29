@@ -72,7 +72,7 @@ namespace Artemis_Issue_Tracker.Controllers
             {
                 Projects = await projects.ToPagedListAsync(pageNumber, pageSize)
             };
-            
+
             return View(projectsViewModel.Projects);
         }
 

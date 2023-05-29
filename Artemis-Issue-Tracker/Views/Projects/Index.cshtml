@@ -45,7 +45,7 @@
     <!-- Need to make this a dynamic search bar in furture sprint-->
     <div class="search-container">
         <form asp-controller="Projects" asp-action="Index">
-            <input class="search-field" type="search" name="searchTerm" oninput="document.querySelector('.search-icon').style.display = 'none', document.querySelector('.cancel-icon').style.display = 'initial'" />
+            <input class="search-field" type="search" name="searchTerm" placeholder="Search Projects" oninput="document.querySelector('.search-icon').style.display = 'none', document.querySelector('.cancel-icon').style.display = 'initial'" />
         </form>
 
         <div class="search-icon">
