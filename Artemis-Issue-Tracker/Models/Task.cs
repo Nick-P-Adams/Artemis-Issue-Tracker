@@ -25,7 +25,7 @@ namespace Artemis_Issue_Tracker.Models
         [ForeignKey("project")]
         public int? project_id { get; set; }
 
-        [ForeignKey("task")]
+        [ForeignKey("parent")]
         public int? parent_id { get; set; }
 
         [ForeignKey("sprint")]
@@ -35,7 +35,7 @@ namespace Artemis_Issue_Tracker.Models
         public Project? project { get; set; }
         public Task? parent { get; set; }
         public Sprint? sprint { get; set; }
-        public ICollection<Task>? sub_tasks { get; set; }
+        public ICollection<Task> sub_tasks { get; set; }
         public ICollection<Comment>? comments { get; set; }
         public ICollection<Log>? logs { get; set; }
         public ICollection<Resource>? resources { get; set; }
@@ -56,6 +56,7 @@ namespace Artemis_Issue_Tracker.Models
             start = DateTime.MinValue;
             end = DateTime.MinValue;
             created = DateTime.Now;
+            sub_tasks = new List<Task>();
         }
     }
 }

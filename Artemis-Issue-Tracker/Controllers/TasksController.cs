@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Artemis_Issue_Tracker.Data;
 using Artemis_Issue_Tracker.Models;
+using Artemis_Issue_Tracker.ViewModels;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -22,7 +23,11 @@ namespace Artemis_Issue_Tracker.Controllers
         // GET: Issues
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Task.ToListAsync());
+            var taskViewModel = new TaskViewModel
+            {
+                Epics = await _context.Task.ToListAsync()
+            };
+            return View(taskViewModel);
         }
 
         // GET: Issues/Details/5
@@ -54,15 +59,15 @@ namespace Artemis_Issue_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,AttachmentURL,CreationDate,SprintCount")] Models.Task issue)
+        public async Task<IActionResult> Create([Bind("id,name,description,priority,status,type,position,progress,time_estimate,time_log,start,end,created")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(issue);
+                _context.Add(task);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(issue);
+            return View(task);
         }
 
         // GET: Issues/Edit/5

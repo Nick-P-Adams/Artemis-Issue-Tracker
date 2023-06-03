@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Artemis_Issue_Tracker.Models.Task>
+﻿@model Artemis_Issue_Tracker.ViewModels.TaskViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -25,6 +25,19 @@
         <div class="backlog">
             <div class="view-header">
                 <h1 class="view-title">Backlog</h1>
+
+                <div class="button-container">
+                    <a class="button-create" asp-action="Create">
+                        <svg class="button-icon" height="20" width="20" viewBox="0 0 20 20">
+                            <g>
+                                <circle cx="10" cy="10" r="9" stroke-width="2" fill="none" />
+                                <line x1="5" y1="10" x2="15" y2="10" stroke-width="2" />
+                                <line x1="10" y1="5" x2="10" y2="15" stroke-width="2" />
+                            </g>
+                        </svg>
+                        <p>Create New</p>
+                    </a>
+                </div>
             </div>
 
             <div class="filter-container">
@@ -51,12 +64,59 @@
             </div>
 
             <div class="sprint-container">
+                <divL>
 
+                </divL>
             </div>
 
             <div class="task-container">
+                @if(Model.Epics.Count() > 0) {
+                    <div class="epics">
+                        <div class="accordion" id="accordionEpics">
+                            @foreach(var epic in Model.Epics) {
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{@epic.name}" aria-expanded="true" aria-controls="collapse{@epic.name}">
+                                            @epic.name
+                                        </button>
+                                    </h2>
+                                    <div id="collapse{@epic.name}" class="accordion-collapse collapse show" data-bs-parent="#accordionEpics">
+                                        <div class="accordion" id="accordionSubTasks">
+                                            @foreach(var task in epic.sub_tasks)
+                                            {
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{@task.name}" aria-expanded="true" aria-controls="collapse{@task.name}">
+                                                            TEST @task.name 
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapse{@task.name}" class="accordion-collapse collapse show" data-bs-parent="#accordionSubTasks"></div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
 
+                @if (Model.Stories.Count() > 0)
+                {
+                    
+                }
+
+                @if (Model.Tasks.Count() > 0)
+                {
+                    
+                }
+
+                @if (Model.Bugs.Count() > 0)
+                {
+
+                }
             </div>
+
         </div>
     </div>
 

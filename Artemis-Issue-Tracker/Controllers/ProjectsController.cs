@@ -66,9 +66,9 @@ namespace Artemis_Issue_Tracker.Controllers
             int pageNumber = page ?? 1,
                 pageSize = 8;
 
-            // The ProjectIndexViewModel at the moment is not neccessary atm
+            // The ProjectViewModel at the moment is not neccessary atm
             // However, it may be useful in the future if I need to pass more than just the Project model info to the view
-            var projectsViewModel = new ProjectIndexViewModel
+            var projectsViewModel = new ProjectViewModel
             {
                 Projects = await projects.ToPagedListAsync(pageNumber, pageSize)
             };

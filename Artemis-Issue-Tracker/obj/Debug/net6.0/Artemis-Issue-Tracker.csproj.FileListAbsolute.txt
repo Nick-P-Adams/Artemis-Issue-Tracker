@@ -307,3 +307,4 @@ C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debu
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.pdb
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.genruntimeconfig.cache
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\ref\Artemis-Issue-Tracker.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

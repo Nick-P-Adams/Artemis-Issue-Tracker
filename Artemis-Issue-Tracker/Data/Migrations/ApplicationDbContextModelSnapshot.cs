@@ -17,7 +17,7 @@ namespace Artemis_Issue_Tracker.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.12")
+                .HasAnnotation("ProductVersion", "6.0.16")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -225,9 +225,6 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                     b.Property<int?>("parent_id")
                         .HasColumnType("int");
 
-                    b.Property<int?>("parentid")
-                        .HasColumnType("int");
-
                     b.Property<int>("position")
                         .HasColumnType("int");
 
@@ -262,7 +259,7 @@ namespace Artemis_Issue_Tracker.Data.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("parentid");
+                    b.HasIndex("parent_id");
 
                     b.HasIndex("project_id");
 
@@ -552,7 +549,7 @@ namespace Artemis_Issue_Tracker.Data.Migrations
                 {
                     b.HasOne("Artemis_Issue_Tracker.Models.Task", "parent")
                         .WithMany("sub_tasks")
-                        .HasForeignKey("parentid");
+                        .HasForeignKey("parent_id");
 
                     b.HasOne("Artemis_Issue_Tracker.Models.Project", "project")
                         .WithMany("tasks")
