@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Artemis_Issue_Tracker.Data;
 using Artemis_Issue_Tracker.Models;
-using Artemis_Issue_Tracker.ViewModels;
+using System.Data;
 
 namespace Artemis_Issue_Tracker.Controllers
 {
@@ -23,11 +23,14 @@ namespace Artemis_Issue_Tracker.Controllers
         // GET: Issues
         public async Task<IActionResult> Index()
         {
-            var taskViewModel = new TaskViewModel
+            List<Models.Task> tasks = await _context.Task.OrderBy(t => t.position).ToListAsync();
+
+            foreach (Models.Task task in tasks)
             {
-                Epics = await _context.Task.ToListAsync()
-            };
-            return View(taskViewModel);
+                task.sub_tasks = task.sub_tasks.OrderBy(st => st.position).ToList();
+            }
+
+            return View(tasks);
         }
 
         // GET: Issues/Details/5
@@ -107,7 +110,7 @@ namespace Artemis_Issue_Tracker.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!IssueExists(issue.id))
+                    if (!TaskExists(issue.id))
                     {
                         return NotFound();
                     }
@@ -119,6 +122,38 @@ namespace Artemis_Issue_Tracker.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(issue);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdatePositions(int[] taskIds) 
+        {
+            using (var transaction = _context.Database.BeginTransaction())
+            {
+                try
+                {
+                    for (int i = 0; i < taskIds.Length; i++)
+                    {
+                        if (TaskExists(taskIds[i])) 
+                        {
+                            var taskId = taskIds[i];
+                            var task = await _context.Task.FindAsync(taskId);
+                            task.position = i;
+
+                            _context.Update(task);
+                        }
+                    }
+
+                    await _context.SaveChangesAsync();
+                    await transaction.CommitAsync();
+
+                    return Ok();
+                }
+                catch (DBConcurrencyException ex)
+                {
+                    await transaction.RollbackAsync();
+                    return StatusCode(500, $"An error occurred while updating the position of the task: {ex.Message}");
+                }
+            }
         }
 
         // GET: Issues/Delete/5
@@ -158,7 +193,7 @@ namespace Artemis_Issue_Tracker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IssueExists(int id)
+        private bool TaskExists(int id)
         {
           return _context.Task.Any(e => e.id == id);
         }

@@ -90,6 +90,7 @@ C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debu
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Composition.Runtime.dll
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Composition.TypedParts.dll
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Configuration.ConfigurationManager.dll
+C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Drawing.Common.dll
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Reflection.MetadataLoadContext.dll
@@ -307,4 +308,3 @@ C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debu
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.pdb
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\Artemis-Issue-Tracker.genruntimeconfig.cache
 C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\obj\Debug\net6.0\ref\Artemis-Issue-Tracker.dll
-C:\Users\nickp\source\repos\Artemis-Issue-Tracker\Artemis-Issue-Tracker\bin\Debug\net6.0\System.Diagnostics.DiagnosticSource.dll

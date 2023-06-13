@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Eqmn6YJcu1/NdHLXxHrLz03trRPAjKEAM19ynCL87FJqOm5AWfhNZENilNeokw8EEkvYYrfsuOl18heCik7vCA==",
+  "dgSpecHash": "htjY2Oeu056IwczGqOV3KdC0MJ/+15IPtArrAxzdqfHBr4A3+ypAuhq8ZhJqcTaUQIJsMKRjMXxwTEtZIoKLcg==",
   "success": true,
   "projectFilePath": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\nickp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\nickp\\.nuget\\packages\\jetbrains.annotations\\2022.3.1\\jetbrains.annotations.2022.3.1.nupkg.sha512",
+    "C:\\Users\\nickp\\.nuget\\packages\\jquery\\3.7.0\\jquery.3.7.0.nupkg.sha512",
+    "C:\\Users\\nickp\\.nuget\\packages\\jquery.ui.combined\\1.13.2\\jquery.ui.combined.1.13.2.nupkg.sha512",
     "C:\\Users\\nickp\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",
     "C:\\Users\\nickp\\.nuget\\packages\\messagepack.annotations\\2.1.152\\messagepack.annotations.2.1.152.nupkg.sha512",
     "C:\\Users\\nickp\\.nuget\\packages\\messagepackanalyzer\\2.1.152\\messagepackanalyzer.2.1.152.nupkg.sha512",

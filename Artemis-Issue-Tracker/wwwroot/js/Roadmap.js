@@ -109,7 +109,6 @@ let dateItems = document.getElementsByClassName("date-item"),
 let currentDateItemPosition = ((dateItemWidth * currentDate) - (dateItemWidth / 2)) - (roadmapContainer.clientWidth / 2),
     currentPosition = { left: 0, x: 0 };
 
-console.log(currentDate);
 const mouseDownHandler = function (e) {
     pos = {
         // The current scroll

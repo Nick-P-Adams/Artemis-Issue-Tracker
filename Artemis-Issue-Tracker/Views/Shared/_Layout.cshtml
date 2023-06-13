@@ -43,12 +43,14 @@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-ui/dist/jquery-ui.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <!-- Consider removing the menu.js scripts below and just instantiate them in site.js instead -->
     <script src="~/js/DropdownMenu.js" asp-append-version="true"></script>
     <script src="~/js/PopupMenu.js" asp-append-version="true"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

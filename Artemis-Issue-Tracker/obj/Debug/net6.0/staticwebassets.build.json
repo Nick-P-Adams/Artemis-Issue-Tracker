@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QnZSpddAmdaQWSYbq5dnSpKfJiRfuTrHG/eobaNxmU4=",
+  "Hash": "baegUbvAEfeYOdH+Vq7UJVlV4qqsS0kobp48foPEqHA=",
   "Source": "Artemis-Issue-Tracker",
   "BasePath": "_content/Artemis-Issue-Tracker",
   "Mode": "Default",
@@ -2140,6 +2140,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\lib\\jquery-ui\\dist\\jquery-ui.min.js",
+      "SourceId": "Artemis-Issue-Tracker",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\",
+      "BasePath": "_content/Artemis-Issue-Tracker",
+      "RelativePath": "lib/jquery-ui/dist/jquery-ui.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\jquery-ui\\dist\\jquery-ui.min.js"
     },
     {
       "Identity": "C:\\Users\\nickp\\source\\repos\\Artemis-Issue-Tracker\\Artemis-Issue-Tracker\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
