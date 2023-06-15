@@ -3,7 +3,8 @@
 
 // Write your JavaScript code.
 
-$(function () {
+// Allows for sorting of backlog tasks and updates their position attribute when needed
+$(document).ready(function () {
     $(".accordion").sortable({
         update: function (event, ui) {
             // Retrieve the sorted task IDs
@@ -20,18 +21,47 @@ $(function () {
                 type: "POST",
                 data: { taskIds: sortedTaskIds },
                 success: function () {
-                    console.log("Task order updated successfully.");
+                    console.log("Task Order Updated Successfully.");
                 },
                 error: function () {
-                    console.log("Failed to update task order.");
+                    console.log("Failed To Update Task Order.");
                 }
             });
         }
     });
-});
 
-$(document).ready(function () {
-    // Initialize the modal
-    const modal = document.getElementById('myModal');
-    const myModal = new bootstrap.Modal(modal);
+    $('.saveTaskButton').on('click', function () {
+        var taskData = {}; // Object to store the task data
+        var token = $('input[name="__RequestVerificationToken"]').val();
+
+        $('.createTaskForm input').each(function () {
+            var field = $(this).data('field');
+            var value = $(this).val();
+            taskData[field] = value;
+        });
+
+        $.ajax({
+            url: '/Tasks/Create',
+            method: 'POST',
+            data: taskData,
+            headers: {'RequestVerificationToken': token},
+            success: function (response) {
+                if (response.success) {
+                    console.log("Task Created Successfully.");
+                } else {
+                    var errors = response.errors;
+
+                    // Update the specific elements inside the modal with the validation errors
+                    for (var fieldName in errors) {
+                        var errorMessages = errors[fieldName];
+                        var errorElement = $('[data-valmsg-for="' + fieldName + '"]');
+                        errorElement.text(errorMessages.join(', '));
+                    }
+                }
+            },
+            error: function (xhr, status, error) {
+                console.log("Failed To Create Task.");
+            }
+        });
+    });
 });

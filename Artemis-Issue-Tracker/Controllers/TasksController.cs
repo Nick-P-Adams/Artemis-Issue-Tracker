@@ -62,15 +62,17 @@ namespace Artemis_Issue_Tracker.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,name,description,priority,status,type,position,progress,time_estimate,time_log,start,end,created")] Models.Task task)
+        public async Task<IActionResult> Create([Bind("name,project_id,parent_id,description,priority,status,type,position,progress,time_estimate,time_log,start,end,created")] Models.Task task)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(task);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return Ok();
             }
-            return View(task);
+
+            var errors = ModelState.ToDictionary(x => x.Key, x => x.Value.Errors.Select(e => e.ErrorMessage));
+            return Json(new { success = false, errors });
         }
 
         // GET: Issues/Edit/5

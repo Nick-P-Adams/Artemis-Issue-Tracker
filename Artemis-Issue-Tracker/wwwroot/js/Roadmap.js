@@ -24,7 +24,7 @@ function renderRoadmap() {
         }
 
         // if needed this can be rearragned to have unique ids for date-item instead of the unordered lists in week-container
-        let dateItemHTML = `<div class="date-item">
+        let dateItemHTML = `<div class="date-item text-light">
                                 <div class="month-container">
                                      <p class="month-name">${months[month]}</p>
                                 </div>
