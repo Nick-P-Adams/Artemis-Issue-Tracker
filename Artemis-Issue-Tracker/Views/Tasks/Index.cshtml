@@ -93,62 +93,56 @@
                     </div>
                 </div>
 
-                <div class="accordion" id="accordion-teir1">
+                <div class="accordion" id="accordion-backlog">
                     @foreach(var task_t1 in Model)
                     {
                         @if(task_t1.parent == null)
                         {
-                            <div class="accordion-item task_t1" data-task-id="@task_t1.id">
+                            <div class="accordion-item" data-task-id="@task_t1.id">
                                 <h2 class="accordion-header">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#task_t1_@task_t1.id" aria-expanded="false" aria-controls="task_t1_@task_t1.id">
+                                    <button class="accordion-button" type="button" data-bs-target="#task-@task_t1.id" data-subtask-count="@task_t1.sub_tasks.Count()" aria-expanded="false" aria-controls="task-@task_t1.id">
                                         @task_t1.name
                                     </button>
                                 </h2>
 
-                                @if(task_t1.sub_tasks.Count() > 0)
-                                {
-                                    <div id="task_t1_@task_t1.id" class="accordion-collapse collapse" data-bs-parent="#accordion-teir1">
-                                        <div class="accordion-body">
-                                            <div class="accordion" id="accordion-teir2">
-                                                @foreach(var task_t2 in task_t1.sub_tasks)
-                                                {
-                                                    <div class="accordion-item task_t2" data-task-id="@task_t2.id">
-                                                        <h2 class="accordion-header">
-                                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#task_t2_@task_t2.id" aria-expanded="false" aria-controls="task_t2_@task_t2.id">
-                                                                @task_t2.name
-                                                            </button>
-                                                        </h2>
+                                <div class="accordion-collapse collapse" id="task-@task_t1.id" data-bs-parent="#accordion-backlog">
+                                    <div class="accordion-body">
+                                        <div class="accordion" id="accordion-@task_t1.id">
+                                            @foreach(var task_t2 in task_t1.sub_tasks)
+                                            {
+                                                <div class="accordion-item" data-task-id="@task_t2.id">
+                                                    <h2 class="accordion-header">
+                                                        <button class="accordion-button" type="button" data-bs-target="#task-@task_t2.id" data-subtask-count="@task_t2.sub_tasks.Count()" aria-expanded="false" aria-controls="task-@task_t2.id">
+                                                            @task_t2.name
+                                                        </button>
+                                                    </h2>
 
-                                                        @if(task_t2.sub_tasks.Count() > 0)
-                                                        {
-                                                            <div id="task_t2_@task_t2.id" class="accordion-collapse collapse" data-bs-parent="#accordion-teir2">
-                                                                <div class="accordion-body">
-                                                                    <div class="accordion" id="accordion-teir3">
-                                                                        @foreach(var task_t3 in task_t2.sub_tasks)
-                                                                        {
-                                                                            <div class="accordion-item task_t3" data-task-id="@task_t3.id">
-                                                                                <h2 class="accordion-header">
-                                                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#task_t3_@task_t3.id" aria-expanded="false" aria-controls="task_t3_@task_t3.id">
-                                                                                        @task_t3.name
-                                                                                    </button>
-                                                                                </h2>
-                                                                            </div>
-                                                                        }
+                                                    <div id="task-@task_t2.id" class="accordion-collapse collapse" data-bs-parent="#accordion-@task_t1.id">
+                                                        <div class="accordion-body">
+                                                            <div class="accordion accordion-final" id="accordion-@task_t2.id">
+                                                                @foreach(var task_t3 in task_t2.sub_tasks)
+                                                                {
+                                                                    <div class="accordion-item" data-task-id="@task_t3.id">
+                                                                        <h2 class="accordion-header">
+                                                                            <button class="accordion-button" type="button">
+                                                                                @task_t3.name
+                                                                            </button>
+                                                                        </h2>
                                                                     </div>
-                                                                </div>
+                                                                }
                                                             </div>
-                                                        }
+                                                        </div>
                                                     </div>
-                                                }
-                                            </div>
+                                                </div>
+                                            }
                                         </div>
                                     </div>
-                                }
+                                </div>
                             </div>
                         }
                     }
-                    <div class="accordion-item">  
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                    <div class="accordion-item" id="create-task-item">  
+                        <button type="button" class="btn btn-primary create-task-button">
                             <svg class="button-icon" height="20" width="20" viewBox="0 0 20 20">
                                 <g>
                                     <circle cx="10" cy="10" r="9" stroke-width="2" fill="none" />
@@ -161,9 +155,7 @@
                     </div>
                 </div>
 
-                <div class="create-task-container">
-                    @Html.Partial("Create", new Artemis_Issue_Tracker.Models.Task())
-                </div>
+                <div class="create-task-container"></div>
             </div>
         </div>
     </div>

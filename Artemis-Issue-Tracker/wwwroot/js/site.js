@@ -5,6 +5,8 @@
 
 // Allows for sorting of backlog tasks and updates their position attribute when needed
 $(document).ready(function () {
+    enableAccordionToggle();
+
     $(".accordion").sortable({
         update: function (event, ui) {
             // Retrieve the sorted task IDs
@@ -30,7 +32,9 @@ $(document).ready(function () {
         }
     });
 
-    $('.saveTaskButton').on('click', function () {
+    $(document).on('click', '.create-task-button', loadCreateTaskModal);
+
+    $(document).on('click', '.save-task-button', function () {
         var taskData = {}; // Object to store the task data
         var token = $('input[name="__RequestVerificationToken"]').val();
 
@@ -47,15 +51,36 @@ $(document).ready(function () {
             headers: {'RequestVerificationToken': token},
             success: function (response) {
                 if (response.success) {
+                    var parentId = taskData["parent_id"];
+                    var parentAccordion = $(`#accordion-${parentId}`);
+                    var accordionItem;
+
+                    if (parentId == "") {
+                        accordionItem = createAccordionItem(response.id, taskData["name"]);
+                        $("#create-task-item").before(accordionItem);
+                    }
+                    else {
+                        accordionItem = createAccordionItem(response.id, taskData["name"]);
+
+                        // bad solution find better solution
+                        if (parentAccordion.className == "accordion-final") {
+                            accordionItem = createT3AccordionItem(response.id, taskData["name"]);
+                        }
+
+                        parentAccordion.append(accordionItem);
+                    }
+
+                    // Could make this more efficient but having a varriant that is passed only the new element that may need toggle enabled
+                    enableAccordionToggle();
+                    $('#createTaskModal').modal('hide');
                     console.log("Task Created Successfully.");
                 } else {
                     var errors = response.errors;
 
-                    // Update the specific elements inside the modal with the validation errors
                     for (var fieldName in errors) {
                         var errorMessages = errors[fieldName];
                         var errorElement = $('[data-valmsg-for="' + fieldName + '"]');
-                        errorElement.text(errorMessages.join(', '));
+                        errorElement.text(errorMessages);
                     }
                 }
             },
@@ -65,3 +90,68 @@ $(document).ready(function () {
         });
     });
 });
+
+function loadCreateTaskModal() {
+    $.get('/Tasks/GetCreateTaskModal', function (data) {
+        $('.create-task-container').html(data);
+        $('#createTaskModal').modal('show');
+    });
+}
+
+function enableAccordionToggle() {
+    $(".accordion-button").each(function () {
+        var count = $(this).data('subtask-count');
+
+        if (count != "" && count > 0) {
+            $(this).attr('data-bs-toggle', 'collapse');
+        }
+    });
+}
+
+function createAccordionItem(taskId, taskName) {
+    var accordionItem = document.createElement("div");
+    accordionItem.className = `accordion-item`;
+    accordionItem.setAttribute('data-task-id', taskId);
+
+    // Create the accordion-header element
+    var accordionHeader = document.createElement('h2');
+    accordionHeader.classList.add('accordion-header');
+
+    // Create the button element
+    var button = document.createElement('button');
+    button.classList.add('accordion-button');
+    button.setAttribute('type', 'button');
+    button.setAttribute('data-bs-target', `#task-${taskId}`);
+    button.setAttribute('data-subtask-count', 0);
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', `task-${taskId}`);
+    button.textContent = taskName;
+
+    // Constructing the accordion item heirarchy
+    accordionHeader.appendChild(button);
+    accordionItem.appendChild(accordionHeader);
+
+    return accordionItem;
+}
+
+function createT3AccordionItem(taskId, taskName) {
+    var accordionItem = document.createElement("div");
+    accordionItem.className = `accordion-item`;
+    accordionItem.setAttribute('data-task-id', taskId);
+
+    // Create the accordion-header element
+    var accordionHeader = document.createElement('h2');
+    accordionHeader.classList.add('accordion-header');
+
+    // Create the button element
+    var button = document.createElement('button');
+    button.classList.add('accordion-button');
+    button.setAttribute('type', 'button');
+    button.textContent = taskName;
+
+    // Constructing the accordion item heirarchy
+    accordionHeader.appendChild(button);
+    accordionItem.appendChild(accordionHeader);
+
+    return accordionItem;
+}

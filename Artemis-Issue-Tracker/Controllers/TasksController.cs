@@ -68,7 +68,7 @@ namespace Artemis_Issue_Tracker.Controllers
             {
                 _context.Add(task);
                 await _context.SaveChangesAsync();
-                return Ok();
+                return Json(new { id = task.id, success = true });
             }
 
             var errors = ModelState.ToDictionary(x => x.Key, x => x.Value.Errors.Select(e => e.ErrorMessage));
@@ -193,6 +193,12 @@ namespace Artemis_Issue_Tracker.Controllers
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult GetCreateTaskModal()
+        {
+            var newTask = new Models.Task();
+            return PartialView("Create", newTask);
         }
 
         private bool TaskExists(int id)
